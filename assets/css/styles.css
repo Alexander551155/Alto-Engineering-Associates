@@ -252,7 +252,7 @@ body{
   color: var(--green-dark);
   text-decoration:none;
   font-weight:600;
-  word-break: break-all;   /* <<< verhindert Abschneiden der Email */
+  word-break: break-word;   /* <<< verhindert Abschneiden der Email */
 }
 
 
