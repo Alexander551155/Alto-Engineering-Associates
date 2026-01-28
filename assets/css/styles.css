@@ -406,6 +406,15 @@ body{
   align-items: stretch;
 }
 
+.bottom{
+  margin-top: auto;      /* schiebt alles nach unten */
+  display: grid;
+  justify-items: center; /* mittig */
+  gap: 10px;
+  padding-top: 14px;
+}
+
+
 /* Tiles */
 .tile{
   border-radius: 18px;
