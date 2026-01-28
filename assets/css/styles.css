@@ -276,57 +276,94 @@ body{
 } 
 }
 /* Portrait (Handy hochkant): Kontakt darf höher sein */
+/* =========================
+   MOBILE PORTRAIT (hochkant)
+   - Card höher
+   - Bilder gleich (4:3)
+   - Kontakt darf höher werden (kein Abschneiden)
+   ========================= */
 @media (max-width: 480px) and (orientation: portrait){
 
-  /* Card fast Vollbild */
+  /* Hintergrund iOS freundlich */
+  body{
+    background-attachment: scroll;
+  }
+
+  /* Card/Shell: mehr Höhe und “größer” wirken */
+  .shell{
+    max-width: 430px;
+    padding: 10px 10px 18px;
+  }
+
   .card{
-    min-height: 92vh;
     padding: 18px;
+    border-radius: 24px;
+
+    /* macht die Card höher -> mehr Platz nach unten */
+    min-height: 92vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
   }
 
-  /* Grid größer & luftiger */
+  /* Grid: mehr Luft, nicht auf gleiche Höhe zwingen */
   .grid{
+    grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+    align-items: start;
   }
 
-  /* Alle Kacheln gleich groß (4:3) */
+  /* Alle Bild-Kacheln gleich groß (4:3) */
   .tile{
     aspect-ratio: 4 / 3;
+    min-height: 0;
   }
 
   .tile img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
   }
 
-  /* Kontakt genauso groß wie Bilder */
+  /* Kontakt-Kachel: darf höher sein, damit nix abgeschnitten wird */
   .tile.contact{
-    aspect-ratio: 4 / 3;
+    aspect-ratio: auto;      /* wichtig */
+    min-height: 175px;       /* hier kannst du spielen: 165 / 175 / 185 */
     padding: 12px 10px;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .tile.contact h3{
-    font-size: 13px;
-    margin-bottom: 6px;
+    font-size: 12px;
+    margin: 0 0 6px;
   }
 
   .tile.contact p{
-    font-size: 12px;
-    line-height: 1.35;
+    font-size: 11px;
+    line-height: 1.25;
+    margin: 3px 0;
   }
 
-  /* Subline etwas nach unten drücken */
+  /* Email immer sichtbar, bricht korrekt um */
+  .tile.contact a{
+    display: inline-block;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  /* Subline/Foot: bisschen Platz, damit es nicht “quetscht” */
   .subline-box{
     margin-top: 14px;
   }
+
+  .footer{
+    margin-top: 10px;
+  }
 }
-
-
-
 
 /* Tablet optional */
 @media (min-width: 481px) and (max-width: 900px){
