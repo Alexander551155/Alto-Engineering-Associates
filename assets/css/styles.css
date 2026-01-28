@@ -17,7 +17,7 @@ body{
   color:var(--text);
   background:
     radial-gradient(900px 600px at 50% 0%, rgba(111,143,99,.16), transparent 70%),
-    linear-gradient(180deg, rgba(240,251,245,0.95), rgba(255,255,255,0.97)),
+    linear-gradient(180deg, rgba(240,251,245,0.65), rgba(255,255,255,0.70)),
     url("../../img/Blumen.png") center/cover no-repeat fixed;
 }
 
