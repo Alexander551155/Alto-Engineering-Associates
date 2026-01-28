@@ -314,7 +314,7 @@ body{
 
   /* Alle Bild-Kacheln gleich groß (4:3) */
   .tile{
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1; /*4 / 3*/
     min-height: 0;
   }
 
