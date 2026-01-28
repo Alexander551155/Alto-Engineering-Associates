@@ -71,6 +71,14 @@ body{
   font-size: 14px;
 }
 
+.subline-box{
+  margin: 14px auto 8px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.75); /* oder hellgrün */
+  border: 1px solid rgba(0,0,0,.06);
+}
+
 /* ---------- Card / Content area ---------- */
 .card{
   background: var(--card);
