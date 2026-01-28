@@ -344,7 +344,7 @@ body{
   background:
     radial-gradient(900px 600px at 50% 0%, rgba(111,143,99,.10), transparent 70%), /*0.16*/
     linear-gradient(180deg, rgba(240,251,245,0.30), rgba(255,255,255,0.45)), /*0.70 und 0.85*/
-    url("../../img/BR_5.jpg") center/cover no-repeat fixed; /*Blumen.png*/
+    url("../../img/BR_4.jpg") center/cover no-repeat fixed; /*Blumen.png*/
 }
 
 /* Topbar */
