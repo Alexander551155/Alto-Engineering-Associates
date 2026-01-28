@@ -277,6 +277,7 @@ body{
 }
 /* Portrait (Handy hochkant): Kontakt darf höher sein */
 @media (max-width: 480px) and (orientation: portrait){
+
   /* Card fast Vollbild */
   .card{
     min-height: 92vh;
@@ -323,6 +324,7 @@ body{
     margin-top: 14px;
   }
 }
+
 
 
 
