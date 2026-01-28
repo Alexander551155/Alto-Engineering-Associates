@@ -218,20 +218,20 @@ body{
   }
 
   .shell{
-    padding: 14px 12px 18px;
+    padding: 10px 10px 14px; /*war 14px 12px 18px;*/
   }
 
   .card{
-    padding: 14px;
+    padding: 10px;  /*war 14*/
   }
 
   /* 3x2 bleibt! */
   .grid{
-    gap: 10px;
+    gap: 6px; /*war 10*/
   }
 
   .tile img{
-    aspect-ratio: 1 / 1; /* kompakter auf Handy */
+    aspect-ratio: 3 / 4; /* kompakter auf Handy , war 1 / 1*/
   }
 
   .contact{
