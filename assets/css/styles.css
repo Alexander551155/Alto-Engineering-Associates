@@ -115,7 +115,7 @@ body{
 }
 
 /* Kontakt-Kachel (mittig unten) */
-.contact{
+/*.contact{
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -124,7 +124,23 @@ body{
   background: rgba(255,255,255,.85);
   border:1px solid rgba(111,143,99,.40);
   box-shadow: 0 14px 30px rgba(0,0,0,.08);
+} */
+.contact{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding: 12px 10px;
+  text-align:center;
+
+  background: linear-gradient(180deg, #f4faf6, #ffffff);
+  border:1px solid rgba(111,143,99,.35);
+  border-radius:16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+
+  aspect-ratio: 4 / 3;   /* <<< GLEICHE HÖHE WIE BILDER */
 }
+
 
 .contact h3{
   margin:0 0 10px;
@@ -219,12 +235,26 @@ body{
   }
 
   .contact{
-    padding: 12px 10px;
+    padding: 8px 6px;
+    aspect-ratio: 1 / 1;  /* quadratisch auf Handy – passt perfekt zu Bildern */
   }
 
-  .contact h3{ font-size: 13px; }
-  .contact p{ font-size: 12px; }
+  .contact h3{
+    margin:0 0 6px;
+    font-size: 12px;
 }
+  .contact p{
+    margin:4px 0;
+    line-height:1.35;
+    font-size: 11px;
+}
+.contact a{
+  color: var(--green-dark);
+  text-decoration:none;
+  font-weight:600;
+  word-break: break-all;   /* <<< verhindert Abschneiden der Email */
+}
+
 
 /* Tablet optional */
 @media (min-width: 481px) and (max-width: 900px){
