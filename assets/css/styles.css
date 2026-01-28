@@ -68,7 +68,9 @@ body{
   text-align:center;
   color: var(--muted);
   margin: 10px 0 16px;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 0.12em;
+  font-weight: 500;
 }
 
 .subline-box{
