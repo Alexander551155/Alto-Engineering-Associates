@@ -249,7 +249,7 @@ body{
 
   .contact{
     padding: 8px 6px;
-    aspect-ratio: auto;  /* quadratisch auf Handy – passt perfekt zu Bildern */
+    aspect-ratio: 1 / 1;  /* quadratisch auf Handy – passt perfekt zu Bildern */
     min-height: 0;
     justify-content: center;
   }
