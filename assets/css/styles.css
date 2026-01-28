@@ -230,7 +230,7 @@ body{
   }
 
   .card{
-    padding: 12px;                 /* kleiner, damit alles reinpasst */
+    padding: 12px;                 /* kleiner, damit alles reinpasst ,wenn ich kleiner haben will - 10px dann*/
     border-radius: 22px;
   }
 
