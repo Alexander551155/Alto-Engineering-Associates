@@ -392,6 +392,10 @@ body{
   max-width: 920px;
   margin: 0 auto;
   padding: 14px 0 0;
+  
+  min-height: calc(100svh - 120px); /* 120px ~ Topbar+Header, ggf. anpassen */
+  display: flex;
+  flex-direction: column;
 }
 
 /* GRID */
