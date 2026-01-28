@@ -277,35 +277,53 @@ body{
 }
 /* Portrait (Handy hochkant): Kontakt darf höher sein */
 @media (max-width: 480px) and (orientation: portrait){
-
-  /* Grid nicht mehr auf gleiche Höhe zwingen */
-  .grid{
-    align-items: start;
+  /* Card fast Vollbild */
+  .card{
+    min-height: 92vh;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  /* Bilder bleiben 4:3 */
+  /* Grid größer & luftiger */
+  .grid{
+    gap: 12px;
+  }
+
+  /* Alle Kacheln gleich groß (4:3) */
   .tile{
     aspect-ratio: 4 / 3;
   }
 
-  /* Kontakt-Kachel darf höher werden */
+  .tile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Kontakt genauso groß wie Bilder */
   .tile.contact{
-    aspect-ratio: auto;
-    min-height: 165px;   /* bei Bedarf 175 oder 185 */
-    padding: 10px 8px;
+    aspect-ratio: 4 / 3;
+    padding: 12px 10px;
   }
 
   .tile.contact h3{
-    font-size: 12px;
-    margin: 0 0 6px;
+    font-size: 13px;
+    margin-bottom: 6px;
   }
 
   .tile.contact p{
-    font-size: 11px;
-    line-height: 1.25;
-    margin: 3px 0;
+    font-size: 12px;
+    line-height: 1.35;
+  }
+
+  /* Subline etwas nach unten drücken */
+  .subline-box{
+    margin-top: 14px;
   }
 }
+
 
 
 /* Tablet optional */
