@@ -323,3 +323,200 @@ body{
     gap: 12px;
   }
 }
+
+/* =========================
+   EDITORIAL / AD-STYLE OVERRIDES
+   (am Ende der CSS-Datei einfügen)
+   ========================= */
+
+:root{
+  --accent:#b79c5a;              /* warmes Gold (fein, nicht kitschig) */
+  --paper: rgba(255,255,255,.88); /* warmes „Papier“ */
+  --paper-solid:#fbfaf7;
+  --ink:#121826;
+  --sage:#6f8f63;
+  --sage-dark:#5e7d54;
+  --hairline: rgba(18,24,38,.10);
+}
+
+/* Typo: Editorial */
+body{
+  color: var(--ink);
+}
+
+.brand{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--sage-dark);
+}
+
+/* Topbar: dünner, ruhiger */
+.topbar{
+  padding: 9px 14px;
+  font-size: 11px;
+  letter-spacing: .28em;
+  background: linear-gradient(90deg, var(--sage-dark), var(--sage));
+  position: relative;
+}
+.topbar::after{
+  content:"";
+  display:block;
+  height: 1px;
+  background: rgba(255,255,255,.35);
+  position:absolute;
+  left:0; right:0; bottom:0;
+}
+
+/* Header: mehr Magazin, weniger „App“ */
+.header{
+  background: rgba(255,255,255,.92);
+  border-bottom: 1px solid var(--hairline);
+}
+.header-inner{
+  padding: 14px 16px;
+}
+
+/* Card: weniger Shadow, mehr „Paper“ + Hairline + feiner Gold-Strich */
+.card{
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 24px;
+  box-shadow: 0 18px 55px rgba(0,0,0,.08);
+  position: relative;
+}
+.card::before{
+  content:"";
+  position:absolute;
+  left: 18px;
+  right: 18px;
+  top: 12px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: .9;
+}
+
+/* Grid: gleichmäßiger & „edler“ */
+.grid{
+  gap: 12px;
+}
+
+/* Tiles: weniger „dick“, mehr clean */
+.tile{
+  border-radius: 18px;
+  border: 1px solid rgba(18,24,38,.08);
+  background: var(--paper-solid);
+  overflow: hidden;
+}
+
+/* Bilder: einheitlich (wichtig!) */
+.tile img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display:block;
+  aspect-ratio: 4 / 3; /* wieder zurück zu „sah gut aus“ */
+}
+
+/* Kontakt: wie Bild-Kachel, aber „Paper“ */
+.tile.contact{
+  background: linear-gradient(180deg, rgba(251,250,247,.92), rgba(255,255,255,.86));
+  border: 1px solid rgba(111,143,99,.28);
+  box-shadow: none;
+  aspect-ratio: 4 / 3;          /* exakt gleiche Höhe wie Bilder */
+  padding: 12px 10px;
+}
+
+/* Kontakt-Typo kompakter + bricht sauber */
+.tile.contact h3{
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  margin: 0 0 6px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.tile.contact p{
+  margin: 3px 0;
+  font-size: 11px;
+  line-height: 1.25;
+  color: rgba(18,24,38,.92);
+}
+.tile.contact a{
+  color: var(--sage-dark);
+  font-weight: 600;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  display:inline-block;
+  max-width: 100%;
+}
+
+/* Subline: wie kleine Magazin-„Kapsel“ */
+.subline-box{
+  background: rgba(255,255,255,.70);
+  border: 1px solid rgba(18,24,38,.08);
+  border-radius: 999px;
+  padding: 10px 12px;
+}
+.subline{
+  font-size: 13px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin: 12px 0 10px;
+  color: rgba(18,24,38,.60);
+}
+
+/* Footer: ruhiger */
+.footer{
+  font-size: 12px;
+  color: rgba(18,24,38,.55);
+}
+
+/* =========================
+   MOBILE: 1 Screen, alles gleich groß
+   - Fokus: PORTRAIT ist der harte Fall
+   ========================= */
+@media (max-width: 480px){
+  /* iOS: fixed background vermeiden */
+  body{ background-attachment: scroll; }
+
+  .shell{
+    max-width: 430px;
+    padding: 10px 10px 12px;
+  }
+
+  .card{
+    padding: 14px;
+    border-radius: 24px;
+  }
+
+  .grid{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  /* WICHTIG: Kacheln alle gleich -> 4:3 */
+  .tile{ min-height: 0; }
+  .tile img{ aspect-ratio: 4 / 3; }
+
+  .tile.contact{
+    aspect-ratio: 4 / 3; /* NICHT auto, sonst wird’s ungleich */
+    padding: 10px 8px;
+  }
+
+  /* Wenn Email trotzdem knapp ist -> minimal kleiner */
+  .tile.contact p{ font-size: 10.5px; }
+}
+
+/* Portrait extra: Platz „retten“, ohne Scroll */
+@media (max-width: 480px) and (orientation: portrait){
+  .header-inner{ padding: 12px 14px; }
+  .shell{ padding-bottom: 10px; }
+
+  /* Subline etwas kompakter */
+  .subline{ font-size: 12px; letter-spacing: .16em; }
+  .subline-box{ padding: 9px 10px; }
+
+  /* Footer enger */
+  .footer{ margin-top: 10px; }
+}
