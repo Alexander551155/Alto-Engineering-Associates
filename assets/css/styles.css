@@ -231,12 +231,12 @@ body{
   }
 
   .tile img{
-    aspect-ratio: 3 / 4; /* kompakter auf Handy , war 1 / 1*/
+    aspect-ratio: 4 / 3; /* kompakter auf Handy , war 1 / 1*/
   }
 
   .contact{
     padding: 8px 6px;
-    aspect-ratio: 1 / 1;  /* quadratisch auf Handy – passt perfekt zu Bildern */
+    aspect-ratio: 4 / 3;  /* quadratisch auf Handy – passt perfekt zu Bildern */
   }
 
   .contact h3{
