@@ -243,7 +243,7 @@ body{
 
   /* ALLE KACHELN GLEICH HOCH */
   .tile{
-    aspect-ratio: 4 / 3;           /* zurück wie vorher (sah gut aus) */
+    aspect-ratio: 3 / 4;           /* zurück wie vorher (sah gut aus)........  4 / 3 war*/
     min-height: 0;
   }
 
@@ -309,6 +309,9 @@ body{
    ========================= */
 @media (max-width: 480px) and (orientation: portrait){
   .shell{ padding-bottom: 12px; }
+    .tile.contact{
+    aspect-ratio: 3 / 4;   /* <-- HIER Größe steuern */
+  }
   .card{ padding: 12px; }
   .grid{ gap: 8px; }
 }
