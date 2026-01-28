@@ -393,7 +393,7 @@ body{
   margin: 0 auto;
   padding: 14px 0 0;
   
-  min-height: calc(100svh - 150px); /* 120px ~ Topbar+Header, ggf. anpassen */
+  min-height: calc(100svh - 165px); /* 120px, 150 ~ Topbar+Header, ggf. anpassen */
   display: flex;
   flex-direction: column;
 }
@@ -510,6 +510,11 @@ body{
   color: rgba(18,24,38,.55);
   font-size: 12px;
   line-height: 1.6;
+
+  background: rgba(255,255,255,0.55);
+  backdrop-filter: blur(6px);
+  padding: 10px 16px;
+  border-radius: 16px;
 }
 .footer a, .footer a:visited{
   color: inherit;
