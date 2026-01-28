@@ -220,22 +220,24 @@ body{
   }
 
   .shell{
+    max-width: 420px;     /* optional: wirkt “größer” */
     padding: 10px 10px 14px; /*war 14px 12px 18px;*/
   }
 
   .card{
-    padding: 14px;  /*war 10 und 14*/
+    padding: 16px;  /*war 10 und 14*/
+    border-radius: 24px;
   }
 
   /* 3x2 bleibt! */
   .grid{
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px; /*war 10*/
+    gap: 10px; /*war 10*/
     align-items: stretch;
   }
 /* Jede Kachel ist quadratisch */
 .tile{
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3;
   min-height: 0;
 }
 
@@ -244,12 +246,12 @@ body{
   width: 100%;
   height: 100%;
   object-fit: cover;
-  aspect-ratio: auto; /* wichtig: nicht mehr erzwingen */
+  /*aspect-ratio: auto;  wichtig: nicht mehr erzwingen */
 }
 
   .contact{
     padding: 8px 6px;
-    aspect-ratio: 1 / 1;  /* quadratisch auf Handy – passt perfekt zu Bildern */
+    aspect-ratio: 4 / 3;  /* quadratisch auf Handy – passt perfekt zu Bildern */
     min-height: 0;
     justify-content: center;
   }
