@@ -233,15 +233,21 @@ body{
     gap: 8px; /*war 10*/
     align-items: stretch;
   }
+  .tile{
+  aspect-ratio: 1 / 1;   /* alle Kacheln gleich groß */
+}
 
   .tile img{
-    aspect-ratio: 1 / 1; /* kompakter auf Handy , war 1 / 1, 4 / 3*/
+    aspect-ratio: auto; /* kompakter auf Handy , war 1 / 1, 4 / 3*/
+    height: 100%;
     min-height: 0;
   }
 
   .contact{
-    padding: 8px 6px;
-    aspect-ratio: 1 / 1;  /* quadratisch auf Handy – passt perfekt zu Bildern */
+    padding: 10px 8px;
+    aspect-ratio: auto;  /* quadratisch auf Handy – passt perfekt zu Bildern */
+    min-height: 0;
+    justify-content: center;
   }
 
   .contact h3{
@@ -249,13 +255,15 @@ body{
     font-size: 12px;
 }
   .contact p{
-    margin:4px 0;
-    line-height:1.35;
+    margin:3px 0;
+    line-height:1.25;
     font-size: 11px;
 }
 .contact a{
   color: var(--green-dark);
   text-decoration:none;
+  display: inline-block;
+  max-width: 100%;
   font-weight:600;
   /*word-break: break-word;    <<< verhindert Abschneiden der Email */
   overflow-wrap: anywhere;  /* besser als word-break */
