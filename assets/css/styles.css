@@ -393,7 +393,7 @@ body{
   margin: 0 auto;
   padding: 14px 0 0;
   
-  min-height: calc(100svh - 120px); /* 120px ~ Topbar+Header, ggf. anpassen */
+  min-height: calc(100svh - 150px); /* 120px ~ Topbar+Header, ggf. anpassen */
   display: flex;
   flex-direction: column;
 }
@@ -412,6 +412,7 @@ body{
   justify-items: center; /* mittig */
   gap: 10px;
   padding-top: 14px;
+  padding-bottom: 6px;   /* NEU */
 }
 
 
