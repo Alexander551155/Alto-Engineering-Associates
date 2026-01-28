@@ -1,1 +1,71 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Alto Engineering Associates GmbH</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
 
+  <!-- Grüner Balken oben -->
+  <div class="topbar">
+    NEW IN ♥ ALTO ENGINEERING
+  </div>
+
+  <!-- Weißer Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">Alto Engineering Associates GmbH</div>
+    </div>
+  </header>
+
+  <div class="shell">
+    <div class="subline">Engineering · Architektur · Interiors · Projekte · Planung · Umsetzung</div>
+
+    <main class="card">
+      <section class="grid" aria-label="Galerie">
+
+        <!-- Obere Reihe (3 Bilder) -->
+        <div class="tile"><img src="img/1.jpg" alt="Projektbild 1"></div>
+        <div class="tile"><img src="img/2.jpg" alt="Projektbild 2"></div>
+        <div class="tile"><img src="img/3.jpg" alt="Projektbild 3"></div>
+
+        <!-- Untere Reihe: links Bild, Mitte Kontakt, rechts Bild -->
+        <div class="tile"><img src="img/4.jpg" alt="Projektbild 4"></div>
+
+        <div class="tile contact">
+          <h3>Kontakt</h3>
+          <p>
+            Tel. 06123-605 250<br>
+            Fax 06123-630 025<br>
+            <a href="mailto:fries@altoservices.com">fries@altoservices.com</a>
+          </p>
+          <p>
+            Wallufer Strasse 5<br>
+            65343 Eltville
+          </p>
+        </div>
+
+        <div class="tile"><img src="img/5.jpg" alt="Projektbild 5"></div>
+
+      </section>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Alto Engineering Associates GmbH</div>
+        <div>
+          <a href="impressum.html">Impressum</a> ·
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
