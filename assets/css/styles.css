@@ -275,6 +275,38 @@ body{
   overflow-wrap: anywhere;  /* besser als word-break */
 } 
 }
+/* Portrait (Handy hochkant): Kontakt darf höher sein */
+@media (max-width: 480px) and (orientation: portrait){
+
+  /* Grid nicht mehr auf gleiche Höhe zwingen */
+  .grid{
+    align-items: start;
+  }
+
+  /* Bilder bleiben 4:3 */
+  .tile{
+    aspect-ratio: 4 / 3;
+  }
+
+  /* Kontakt-Kachel darf höher werden */
+  .tile.contact{
+    aspect-ratio: auto;
+    min-height: 165px;   /* bei Bedarf 175 oder 185 */
+    padding: 10px 8px;
+  }
+
+  .tile.contact h3{
+    font-size: 12px;
+    margin: 0 0 6px;
+  }
+
+  .tile.contact p{
+    font-size: 11px;
+    line-height: 1.25;
+    margin: 3px 0;
+  }
+}
+
 
 /* Tablet optional */
 @media (min-width: 481px) and (max-width: 900px){
