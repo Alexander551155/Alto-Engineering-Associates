@@ -18,7 +18,7 @@ body{
   background:
     radial-gradient(900px 600px at 50% 0%, rgba(111,143,99,.16), transparent 70%),
     linear-gradient(180deg, rgba(240,251,245,0.90), rgba(255,255,255,0.92)),
-    url("../../../img/blumen.png") center/cover no-repeat fixed;
+    url("../../img/blumen.png") center/cover no-repeat fixed;
 }
 
 /* ---------- Top bar (grüner Balken oben) ---------- */
