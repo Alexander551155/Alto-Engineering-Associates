@@ -540,9 +540,71 @@ body{
 }
 
 /* PORTRAIT Feintuning */
-@media (max-width: 480px) and (orientation: portrait){
-  .header-inner{ padding: 12px 14px; }
-  .brand{ font-size: 30px; }
-  .grid{ gap: 10px; }
-  .footer{ margin-top: 8px; }
+/* =========================
+   MOBILE LANDSCAPE (quer)
+   - Höhe ist knapp -> Tiles flacher machen
+   - Abstände/Schrift kleiner, damit nix überlappt
+   ========================= */
+@media (max-width: 900px) and (orientation: landscape){
+
+  /* weniger “Luft” oben/unten */
+  .topbar{ padding: 6px 10px; font-size: 11px; }
+  .header-inner{ padding: 10px 12px; }
+  .brand{ font-size: 22px; }
+
+  .shell{ padding: 8px 10px 10px; }
+
+  /* card kompakter */
+  .card{
+    padding: 12px;
+    border-radius: 20px;
+  }
+
+  /* grid enger + flacher */
+  .grid{
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  /* ALLE Tiles gleich flach (wichtig!) */
+  .tile{
+    aspect-ratio: 16 / 9;   /* statt 4/3 oder 1/1 */
+    min-height: 0;
+  }
+
+  .tile img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Kontakt genauso hoch wie Bilder */
+  .tile.contact{
+    aspect-ratio: 16 / 9;
+    padding: 6px 6px;
+  }
+
+  .tile.contact h3{
+    margin: 0 0 4px;
+    font-size: 11px;
+  }
+
+  .tile.contact p{
+    margin: 2px 0;
+    font-size: 10px;
+    line-height: 1.15;
+  }
+
+  /* Footer/Subline enger, damit 1 Screen bleibt */
+  .subline-box{
+    margin: 8px auto 6px;
+    padding: 8px 10px;
+    border-radius: 14px;
+  }
+
+  .footer{
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 1.35;
+  }
 }
