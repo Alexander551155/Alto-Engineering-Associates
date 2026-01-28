@@ -4,18 +4,16 @@
   <meta charset="utf-8">
   <title>Alto Engineering Associates GmbH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet"> -->
+
+  <!-- Elegant Serif + Clean Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
 
-  <!-- Grüner Balken oben -->
-  <div class="topbar">
-    ♥ ALTO ENGINEERING ♥
-  </div>
+  <div class="topbar">ALTO ENGINEERING</div>
 
-  <!-- Weißer Header -->
   <header class="header">
     <div class="header-inner">
       <div class="brand">Alto Engineering Associates GmbH</div>
@@ -24,18 +22,28 @@
 
   <div class="shell">
 
-    <main class="card">
+    <!-- KEINE CARD MEHR -->
+    <main class="stage">
+
       <section class="grid" aria-label="Galerie">
+        <a class="tile" href="#" aria-label="Projektbild 1">
+          <img src="img/18.jpeg" alt="Projektbild 1">
+        </a>
 
-        <!-- Obere Reihe (3 Bilder) -->
-        <div class="tile"><img src="img/18.jpeg" alt="Projektbild 1"></div>
-        <div class="tile"><img src="img/1.jpeg" alt="Projektbild 2"></div>
-        <div class="tile"><img src="img/6.jpeg" alt="Projektbild 3"></div>
+        <a class="tile" href="#" aria-label="Projektbild 2">
+          <img src="img/1.jpeg" alt="Projektbild 2">
+        </a>
 
-        <!-- Untere Reihe: links Bild, Mitte Kontakt, rechts Bild -->
-        <div class="tile"><img src="img/7.jpeg" alt="Projektbild 4"></div>
+        <a class="tile" href="#" aria-label="Projektbild 3">
+          <img src="img/6.jpeg" alt="Projektbild 3">
+        </a>
 
-        <div class="tile contact">
+        <a class="tile" href="#" aria-label="Projektbild 4">
+          <img src="img/7.jpeg" alt="Projektbild 4">
+        </a>
+
+        <!-- Kontakt bleibt mittig unten -->
+        <div class="tile contact" aria-label="Kontakt">
           <h3>Kontakt</h3>
           <p>
             Tel. +49 6123 605 250<br>
@@ -48,13 +56,13 @@
           </p>
         </div>
 
-        <div class="tile"><img src="img/16.jpeg" alt="Projektbild 5"></div>
-
+        <a class="tile" href="#" aria-label="Projektbild 5">
+          <img src="img/16.jpeg" alt="Projektbild 5">
+        </a>
       </section>
-      
-    <div class="subline subline-box""><!--Engineering -->· Architektur · Interiors ·<!--Projekte · Planung · Umsetzung --> </div>
 
-      
+      <div class="subline subline-pill">· Architektur · Interiors ·</div>
+
       <footer class="footer">
         <div>© <span id="year"></span> Alto Engineering Associates GmbH</div>
         <div>
@@ -62,6 +70,7 @@
           <a href="datenschutz.html">Datenschutz</a>
         </div>
       </footer>
+
     </main>
   </div>
 
