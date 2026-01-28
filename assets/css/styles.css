@@ -525,7 +525,7 @@ body{
   text-decoration: underline;
 }
 
-/* MOBILE: 1 Screen, ohne Scroll (so gut wie möglich) */
+/* MOBILE: 1 Screen, ohne Scroll (so gut wie möglich) 
 @media (max-width: 480px){
   body{ background-attachment: scroll; }
 
@@ -534,10 +534,10 @@ body{
 
   .grid{ gap: 10px; }
 
-  /* alles etwas kompakter */
+  /* alles etwas kompakter 
   .subline-pill{ margin-top: 12px; padding: 9px 12px; }
   .tile.contact p{ font-size: 10.5px; }
-}
+} */
 
 /* PORTRAIT Feintuning */
 /* =========================
