@@ -434,11 +434,21 @@ body{
   }
 
   /* Header kompakter */
-  .topbar{
+  /*.topbar{
     padding: 8px 10px;
     font-size: 10px;
     letter-spacing: .22em;
-  }
+  } */
+   .topbar{
+  font-size: 10px;
+  letter-spacing: 0.45em;
+  font-weight: 400;
+  color: rgba(255,255,255,0.85);
+  font-family: "Cormorant Garamond", serif;
+
+}
+
+   
 
   .header-inner{ padding: 10px 12px; }
   .brand{
