@@ -194,7 +194,7 @@ body{
 .subline-pill span{
   display: inline-block;
   padding: 6px 14px;
-  background: rgba(0,0,0,0.06);   /* sehr leichtes Grau */
+  background: rgba(0,0,0,0.065);   /* sehr leichtes Grau */
   border-radius: 4px;
 }
 
