@@ -170,11 +170,11 @@ body{
   margin: 0 auto;
 
   text-align:center;
-  padding: 16px 22px;
+  padding: 16px 22px 22px;
 
-  background: rgba(255,255,255,0.45);
-  border: 1px solid rgba(18,24,38,0.10);
-  box-shadow: 0 12px 34px rgba(0,0,0,0.07);
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(18,24,38,0.08);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
   backdrop-filter: blur(10px);
 
   border-radius: 8px;
@@ -184,10 +184,13 @@ body{
   font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.05;
 
-  color: rgba(18,24,38,0.60);
-  letter-spacing: .22em;
+  color: #6f8f63;
+  letter-spacing: .24em;
   text-transform: uppercase;
+
+  border-bottom: 1px solid rgba(111,143,99,0.45);
 }
+
 
 
 
