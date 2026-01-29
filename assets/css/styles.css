@@ -183,12 +183,21 @@ body{
   font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.05;
 
-  color: #0f0f0f;              /* fast schwarz, edel */
+  color: #0f0f0f;
   letter-spacing: .22em;
   text-transform: uppercase;
 
-  border-bottom: 1px solid rgba(0,0,0,0.55);  /* elegante schwarze Linie */
+  border-bottom: 1px solid rgba(0,0,0,0.55);
 }
+
+/* 👇 Hintergrund NUR hinter dem Text */
+.subline-pill span{
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(0,0,0,0.06);   /* sehr leichtes Grau */
+  border-radius: 4px;
+}
+
 
 
 /* ============================================================
