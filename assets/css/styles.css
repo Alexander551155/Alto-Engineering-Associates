@@ -1,9 +1,8 @@
 /* =========================
-   ALTO – Premium Hero Layout (Desktop refined)
-   Now:
-   - Contact is a slim PILL (no big extra box)
-   - Each contact line has elegant INLINE-SVG icon left (no emoji)
-   - Spacing increased: Images -> Subline -> Contact
+   ALTO – Premium Hero Layout (Desktop)
+   - Gallery big (hero)
+   - Big subline pill
+   - Contact pill like before + SMALL inline SVG icons next to text
    ========================= */
 
 :root{
@@ -195,89 +194,69 @@ body{
 }
 
 /* ============================================================
-   CONTACT – slim pill with left icons
+   CONTACT – pill like before + SMALL inline icons
    ============================================================ */
 .contact-bar{
   width: min(1680px, calc(100vw - 72px));
   margin: var(--space-before-contact) auto 0;
-
+  padding: 0;
   background: transparent;
   border: 0;
   box-shadow: none;
-  padding: 0;
 }
 
 .contact-pill{
+  display: block;
   width: min(980px, 100%);
   margin: 0 auto;
 
-  padding: 16px 18px;
+  text-align:center;
+  padding: 16px 22px;
   border-radius: 999px;
 
   background: rgba(255,255,255,.78);
   border: 1px solid rgba(18,24,38,.10);
   backdrop-filter: blur(14px);
 
+  color: rgba(18,24,38,.68);
+  font-size: 13px;
+  line-height: 1.55;
+
   box-shadow: 0 18px 52px rgba(0,0,0,.10);
 }
 
-.contact-title{
-  text-align:center;
+.contact-pill strong{
+  display:block;
   font-size: 12px;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--sage-dark);
-  margin: 2px 0 12px;
+  margin-bottom: 8px;
 }
 
-/* rows inside pill */
-.contact-rows{
-  width: min(860px, 100%);
-  margin: 0 auto;
+/* inline icon */
+.i{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 
-  display: grid;
-  gap: 10px;
-}
+  width: 16px;
+  height: 16px;
+  vertical-align: -2px;
 
-.contact-row{
-  display:grid;
-  grid-template-columns: 34px 1fr;
-  gap: 12px;
-  align-items: center;
-
-  padding: 10px 12px;
-  border-radius: 14px;
-
-  background: rgba(255,255,255,.40);
-  border: 1px solid rgba(18,24,38,.06);
-}
-
-.contact-ico{
-  width: 34px;
-  height: 34px;
-  display:grid;
-  place-items:center;
-
-  border-radius: 12px;
-  background: rgba(111,143,99,.12);
-  border: 1px solid rgba(111,143,99,.18);
-}
-
-.contact-ico svg{
-  width: 18px;
-  height: 18px;
-  display:block;
+  margin-right: 6px;
   color: var(--sage-dark);
+  opacity: .92;
 }
 
-.contact-text{
-  font-size: 13px;
-  line-height: 1.35;
-  color: rgba(18,24,38,.72);
+.i svg{
+  width: 16px;
+  height: 16px;
+  display:block;
 }
 
-.contact-text a,
-.contact-text a:visited{
+.contact-pill a,
+.contact-pill a:visited{
   color: var(--sage-dark);
   font-weight: 700;
   text-decoration: underline;
@@ -360,7 +339,7 @@ body{
 }
 
 /* =========================
-   Responsive (we tune mobile-horizontal next)
+   Responsive (later we tune mobile-horizontal)
    ========================= */
 @media (max-width: 1100px){
   :root{
@@ -393,7 +372,7 @@ body{
 
   .contact-pill{
     width: min(880px, 100%);
-    border-radius: 22px; /* on smaller sizes, looks better than super long pill */
+    border-radius: 22px;
   }
 }
 
@@ -410,19 +389,14 @@ body{
     border-radius: 18px;
   }
 
-  .contact-row{
-    grid-template-columns: 32px 1fr;
-    padding: 10px 12px;
+  .contact-pill{
+    font-size: 12.5px;
+    padding: 14px 14px;
   }
 
-  .contact-ico{
-    width: 32px;
-    height: 32px;
-  }
-
-  .contact-ico svg{
-    width: 17px;
-    height: 17px;
+  .i, .i svg{
+    width: 15px;
+    height: 15px;
   }
 
   .brand{
