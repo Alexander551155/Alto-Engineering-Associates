@@ -455,7 +455,7 @@ body{
   .gallery .tile:nth-child(5){ display:none; }
    
   .gallery{
-    margin-top: 10px;   /* oder 0px – wie es vorher war */
+    margin-top: 1px;   /* oder 0px – wie es vorher war */
   }
 
 
