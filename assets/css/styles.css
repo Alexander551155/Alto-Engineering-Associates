@@ -170,11 +170,11 @@ body{
   margin: 0 auto;
 
   text-align:center;
-  padding: 16px 22px 22px;
+  padding: 16px 22px;
 
-  background: rgba(255,255,255,0.55);
-  border: 1px solid rgba(18,24,38,0.08);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  background: rgba(255,252,245,0.65);
+  border: 1px solid rgba(156,139,90,0.25);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08);
   backdrop-filter: blur(10px);
 
   border-radius: 8px;
@@ -184,12 +184,11 @@ body{
   font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.05;
 
-  color: #6f8f63;
-  letter-spacing: .24em;
+  color: #9c8b5a;
+  letter-spacing: .28em;
   text-transform: uppercase;
-
-  border-bottom: 1px solid rgba(111,143,99,0.45);
 }
+
 
 
 
