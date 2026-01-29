@@ -142,7 +142,7 @@ body{
 }
 
 .tile{
-  border-radius: none;/*8px */ /*var(--radius-tile); */
+  border-radius: 8px;/*8px */ /*var(--radius-tile); */
   overflow: hidden;
 
   border: 1px solid var(--tile-border);
@@ -203,6 +203,11 @@ body{
   text-transform: uppercase;
 
   border-bottom: 1px solid rgba(0,0,0,0.55);
+  animation: sublineReveal 900ms ease both; 
+}
+@keyframes sublineReveal{
+  from{ opacity:0; transform: translateY(10px); }
+  to{ opacity:1; transform: translateY(0); }
 }
 
 /* 👇 Hintergrund NUR hinter dem Text */
