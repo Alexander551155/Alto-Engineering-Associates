@@ -302,7 +302,7 @@ body{
   box-shadow: 0 18px 52px rgba(0,0,0,.12);
 
   color: rgba(255,255,255,.94);
-  font-size: 12.7px;
+  font-size: 13.5px; /*12.7px*/
   line-height: 1.55;
 }
 
@@ -315,6 +315,18 @@ body{
   color: rgba(255,255,255,.95);
   margin-bottom: 8px;
 }
+.contact-subline{
+  margin-top: 6px;
+  margin-bottom: 12px;
+
+  font-size: 15px;          /* ← größer machen hier */
+  font-weight: 500;
+  letter-spacing: 0.04em;
+
+  color: rgba(255,255,255,0.95);
+}
+
+
 
 /* inline icons */
 .i{
