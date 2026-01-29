@@ -15,7 +15,7 @@
   --hairline: rgba(18,24,38,.12);
 
   /* hero width (everything aligns to this) */
-  --hero-width: min(1680px, calc(100vw - 72px));
+  --hero-width: min(1880px, calc(100vw - 32px)); /*--hero-width: min(1680px, calc(100vw - 72px));*/
 
   --tile-border: rgba(255,255,255,.55);
   --tile-bg: rgba(255,255,255,.12);
