@@ -434,6 +434,24 @@ body{
 }
 
 /* Mobile Portrait: 2x2 only (hide 5th) */
+/* Mobile Portrait: 2x2 only (hide 5th) */
 @media (max-width: 480px) and (orientation: portrait){
   .gallery .tile:nth-child(5){ display:none; }
+
+  /* ✅ Topbar immer 1 Zeile */
+  .topbar{
+    white-space: nowrap;
+    font-size: 10px;          /* ggf. 9px wenn iPhone SE zu eng */
+    letter-spacing: 0.28em;   /* kleiner, damit es in 1 Zeile passt */
+    padding: 9px 10px;
+  }
+
+  /* ✅ Brand ("Alto Engineering Associates") immer 1 Zeile */
+  .brand{
+    white-space: nowrap;
+    font-size: 24px;          /* ggf. 22px wenn iPhone SE zu eng */
+    letter-spacing: 0.06em;   /* etwas weniger Abstand = passt besser */
+    line-height: 1.05;
+  }
 }
+
