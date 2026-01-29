@@ -423,7 +423,7 @@ body{
   /* Kein Scrollen */
   html, body{ height: 100%; }
   body{
-    overflow: hidden;
+    overflow: auto; /*hidden - darf man nichts scrollen*/
     background-attachment: scroll; /* iOS-friendly */
   }
 
