@@ -29,7 +29,9 @@
 
   /* spacing */
   --space-after-gallery: 46px;
-  --space-after-subline: 26px;
+  /*--space-after-subline: 26px; */
+  --space-after-subline: 46px;
+
 }
 
 *{ box-sizing:border-box; }
@@ -133,9 +135,10 @@ body{
    GALLERY – 5 BIG HERO IMAGES
    ============================================================ */
 .gallery{
-   width: 100%;
-  /*width: var(--hero-width);*/
-  padding: 0 24px;
+   /*width: 100%;*/
+  width: var(--hero-width);
+  /*padding: 0 24px;*/
+  padding:0;
   margin: 0 auto var(--space-after-gallery);
 
   display: grid;
@@ -228,8 +231,9 @@ body{
   letter-spacing: 0.02em;               /* ✅ gleich wie Brand */
   text-transform: uppercase;
 
-  font-size: clamp(34px, 3.2vw, 56px);  /* ✅ gleich wie Brand */
+  font-size: clamp(34px, 3.2vw, 62px);  /* ✅ gleich wie Brand */
   line-height: 1.05;
+  letter-spacing: .20em;
 
   color: var(--sage-dark);
   padding: 10px 0 16px;
