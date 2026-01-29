@@ -1,10 +1,9 @@
 /* =========================
    ALTO – Elegant Single-Page CSS (clean)
-   - NO duplicate :root/body
-   - NO .card layout
-   - 3x2 grid centered
-   - Hover zoom on tiles (desktop)
-   - Mobile: 1 screen (best effort), portrait + landscape
+   Client changes:
+   - Contact tile: white on green
+   - Top: company name (green header)
+   - Under images: "Interiors and Architecture"
    ========================= */
 
 :root{
@@ -35,36 +34,21 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--ink);
 
-  /* Background */
   background:
     radial-gradient(900px 600px at 50% 0%, rgba(111,143,99,.10), transparent 70%),
     linear-gradient(180deg, rgba(240,251,245,0.30), rgba(255,255,255,0.45)),
     url("../../img/BR_5.jpg") center/cover no-repeat fixed;
 
-  /* Default: allow normal flow */
   overflow-x: hidden;
 }
 
 /* =========================
-   TOP BAR
-   ========================= */
-.topbar{
-  background: linear-gradient(90deg, var(--sage-dark), var(--sage));
-  color:#fff;
-  text-align:center;
-  padding: 10px 14px;
-  font-size: 11px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-}
-
-/* =========================
-   HEADER
+   HEADER (GREEN TOP, company name)
    ========================= */
 .header{
-  background: rgba(255,255,255,.90);
-  border-bottom: 1px solid var(--hairline);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(90deg, var(--sage-dark), var(--sage));
+  color:#fff;
+  border-bottom: 1px solid rgba(255,255,255,.18);
 }
 
 .header-inner{
@@ -73,15 +57,17 @@ body{
   padding: 16px 16px;
   display:flex;
   justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 .brand{
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
   letter-spacing: .01em;
-  color: var(--sage-dark);
+  color: #fff;
   font-size: clamp(26px, 4vw, 46px);
-  text-align:center;
+  line-height: 1.05;
 }
 
 /* =========================
@@ -93,14 +79,11 @@ body{
   padding: 18px 16px 28px;
 }
 
-/* Stage centers content and pushes footer area down */
 .stage{
   max-width: 920px;
   margin: 0 auto;
   padding: 14px 0 0;
-
-  /* Try to keep everything within viewport */
-  min-height: calc(100svh - 170px); /* approx topbar+header */
+  min-height: calc(100svh - 120px);
   display: flex;
   flex-direction: column;
 }
@@ -116,7 +99,7 @@ body{
 }
 
 /* =========================
-   TILE (same size for all)
+   TILE
    ========================= */
 .tile{
   border-radius: 18px;
@@ -128,7 +111,6 @@ body{
   text-decoration:none;
   position: relative;
 
-  /* uniform size */
   aspect-ratio: 4 / 3;
   min-height: 0;
 }
@@ -143,7 +125,6 @@ body{
   transition: transform .45s ease, filter .45s ease;
 }
 
-/* Hover zoom (desktop only) */
 @media (hover:hover){
   .tile:hover img{
     transform: scale(1.06);
@@ -155,11 +136,11 @@ body{
 }
 
 /* =========================
-   CONTACT TILE (same size!)
+   CONTACT TILE (WHITE ON GREEN)
    ========================= */
 .tile.contact{
-  background: rgba(255,255,255,.72);
-  border: 1px solid rgba(111,143,99,.30);
+  background: linear-gradient(160deg, var(--sage-dark), var(--sage));
+  border: 1px solid rgba(255,255,255,.22);
   padding: 12px 10px;
 
   display:flex;
@@ -167,6 +148,7 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
+  color:#fff;
 }
 
 .tile.contact h3{
@@ -174,29 +156,35 @@ body{
   font-size: 12px;
   letter-spacing: .10em;
   text-transform: uppercase;
+  color:#fff;
 }
 
 .tile.contact p{
   margin: 3px 0;
   font-size: 11px;
   line-height: 1.25;
+  color: rgba(255,255,255,.92);
 }
 
-.tile.contact a{
-  color: var(--sage-dark);
+.tile.contact a,
+.tile.contact a:visited{
+  color: #fff;
   font-weight: 600;
-  text-decoration:none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
   overflow-wrap:anywhere;
   display:inline-block;
   max-width:100%;
 }
-.tile.contact a:hover{ text-decoration: underline; }
+.tile.contact a:hover{
+  opacity: .9;
+}
 
 /* =========================
    BOTTOM AREA (subline + footer)
    ========================= */
 .bottom{
-  margin-top: auto;      /* pushes bottom area down */
+  margin-top: auto;
   display: grid;
   justify-items: center;
   gap: 10px;
@@ -239,21 +227,12 @@ body{
 }
 
 /* =========================
-   MOBILE (Portrait + Landscape)
-   Goal: 1 screen, no scroll (best effort)
+   MOBILE
    ========================= */
 @media (max-width: 480px){
-
-  /* iOS/phone: fixed background is buggy */
   body{
     background-attachment: scroll;
-    overflow: hidden; /* no page scroll on mobile */
-  }
-
-  .topbar{
-    padding: 8px 10px;
-    font-size: 10px;
-    letter-spacing: .24em;
+    overflow: hidden;
   }
 
   .header-inner{
@@ -262,7 +241,6 @@ body{
 
   .brand{
     font-size: 28px;
-    line-height: 1.05;
   }
 
   .shell{
@@ -271,22 +249,17 @@ body{
 
   .stage{
     padding-top: 10px;
-    min-height: calc(100svh - 140px);
+    min-height: calc(100svh - 110px);
   }
 
-  .grid{
-    gap: 10px;
-  }
+  .grid{ gap: 10px; }
 
-  /* Keep all tiles equal */
   .tile{
     aspect-ratio: 4 / 3;
     border-radius: 16px;
   }
 
-  .tile.contact{
-    padding: 8px 6px;
-  }
+  .tile.contact{ padding: 8px 6px; }
 
   .tile.contact h3{
     font-size: 11px;
@@ -312,30 +285,16 @@ body{
   }
 }
 
-/* =========================
-   MOBILE LANDSCAPE (quer)
-   Height is tight -> make tiles flatter
-   ========================= */
 @media (max-width: 900px) and (orientation: landscape){
-
   body{
     background-attachment: scroll;
     overflow: hidden;
   }
 
-  .topbar{
-    padding: 6px 10px;
-    font-size: 10px;
-    letter-spacing: .22em;
-  }
-
-  .header-inner{
-    padding: 10px 12px;
-  }
+  .header-inner{ padding: 10px 12px; }
 
   .brand{
     font-size: 22px;
-    line-height: 1.05;
   }
 
   .shell{
@@ -344,21 +303,14 @@ body{
 
   .stage{
     padding-top: 8px;
-    min-height: calc(100svh - 115px);
+    min-height: calc(100svh - 95px);
   }
 
-  .grid{
-    gap: 8px;
-  }
+  .grid{ gap: 8px; }
 
-  /* flatter so everything fits */
-  .tile{
-    aspect-ratio: 16 / 9;
-  }
+  .tile{ aspect-ratio: 16 / 9; }
 
-  .tile.contact{
-    padding: 6px 6px;
-  }
+  .tile.contact{ padding: 6px 6px; }
 
   .tile.contact h3{
     font-size: 10.5px;
@@ -389,9 +341,6 @@ body{
   }
 }
 
-/* =========================
-   TABLET (optional)
-   ========================= */
 @media (min-width: 481px) and (max-width: 900px){
   .grid{ gap: 12px; }
 }
