@@ -48,7 +48,8 @@ body{
     linear-gradient(180deg, rgba(240,251,245,0.30), rgba(255,255,255,0.45)),
     url("../../img/BR_5.jpg") center/cover no-repeat fixed;
 
-  overflow-x: hidden;
+  overflow-y: auto;
+  overflow-x: hidden; 
 }
 
 /* =========================
