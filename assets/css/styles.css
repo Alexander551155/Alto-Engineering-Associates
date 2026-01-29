@@ -174,7 +174,7 @@ body{
   margin: 0 auto;
 
   text-align:center;
-  padding: 12px 0;
+  padding: 12px 0 18px;
 
   background: transparent;
   border: none;
@@ -187,10 +187,13 @@ body{
   font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.05;
 
-  color: rgba(18,24,38,0.55);
-  letter-spacing: .22em;
+  color: #6f8f63;
+  letter-spacing: .24em;
   text-transform: uppercase;
+
+  border-bottom: 1px solid rgba(111,143,99,0.45);
 }
+
 
 
 /* ============================================================
