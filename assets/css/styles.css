@@ -455,9 +455,8 @@ body{
   .gallery .tile:nth-child(5){ display:none; }
    
   .gallery{
-    margin-top: 1px;   /* oder 0px – wie es vorher war */
+    margin-top: 4px;   /* oder 0px – wie es vorher war */
   }
-
 
   /* ✅ Topbar immer 1 Zeile */
   .topbar{
@@ -477,5 +476,9 @@ body{
    .tile{
     border-radius: 0;
   }
+
+     /* ✅ Abstand oben reduzieren (kommt von shell + stage) */
+  .shell{ padding-top: 6px; }     /* war 14px */
+  .stage{ padding-top: 0; }       /* war 18px */
 }
 
