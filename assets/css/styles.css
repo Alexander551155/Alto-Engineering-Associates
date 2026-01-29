@@ -100,9 +100,10 @@ body{
 .brand{
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   color: #6a7f5f;
-  font-size: clamp(30px, 3.6vw, 54px);
+  /*font-size: clamp(30px, 3.6vw, 54px);*/
+  font-size: clamp(24px, 2.6vw, 42px);
   text-align:center;
 }
 
