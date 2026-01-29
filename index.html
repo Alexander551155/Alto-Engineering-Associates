@@ -11,72 +11,70 @@
 
 <body>
 
-  <!-- TOP: Company name -->
-  <header class="header">
-    <div class="header-inner">
-      <div class="brand">Alto Engineering Associates GmbH</div>
-    </div>
-  </header>
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">Alto Engineering Associates GmbH</div>
+  </div>
+</header>
 
-  <div class="shell">
-    <main class="stage">
+<div class="shell">
+  <main class="stage">
 
-      <section class="grid" aria-label="Galerie">
-        <a class="tile" href="#" aria-label="Projektbild 1">
-          <img src="img/18.jpeg" alt="Projektbild 1">
-        </a>
+    <section class="grid" aria-label="Galerie">
 
-        <a class="tile" href="#" aria-label="Projektbild 2">
-          <img src="img/1.jpeg" alt="Projektbild 2">
-        </a>
+      <a class="tile" href="#">
+        <img src="img/18.jpeg" alt="Projektbild 1">
+      </a>
 
-        <a class="tile" href="#" aria-label="Projektbild 3">
-          <img src="img/6.jpeg" alt="Projektbild 3">
-        </a>
+      <a class="tile" href="#">
+        <img src="img/1.jpeg" alt="Projektbild 2">
+      </a>
 
-        <a class="tile" href="#" aria-label="Projektbild 4">
-          <img src="img/7.jpeg" alt="Projektbild 4">
-        </a>
+      <a class="tile" href="#">
+        <img src="img/6.jpeg" alt="Projektbild 3">
+      </a>
 
-        <!-- Kontakt: weiß auf grün -->
-        <div class="tile contact" aria-label="Kontakt">
-          <h3>Kontakt</h3>
-          <p>
-            Tel. +49 6123 605 250<br>
-            Fax +49 6123 630 025<br>
-            <a href="mailto:fries@altoservices.com">fries@altoservices.com</a>
-          </p>
-          <p>
-            Wallufer Strasse 5<br>
-            65343 Eltville
-          </p>
-        </div>
+      <a class="tile" href="#">
+        <img src="img/7.jpeg" alt="Projektbild 4">
+      </a>
 
-        <a class="tile" href="#" aria-label="Projektbild 5">
-          <img src="img/16.jpeg" alt="Projektbild 5">
-        </a>
-      </section>
+      <a class="tile" href="#">
+        <img src="img/16.jpeg" alt="Projektbild 5">
+      </a>
 
-      <div class="bottom">
-        <!-- Under the images -->
-        <div class="subline subline-pill">Interiors and Architecture</div>
-
-        <footer class="footer">
-          <div>© <span id="year"></span> Alto Engineering Associates GmbH</div>
-          <div>
-            <a href="impressum.html">Impressum</a> ·
-            <a href="datenschutz.html">Datenschutz</a>
-          </div>
-        </footer>
+      <div class="tile contact">
+        <h3>Kontakt</h3>
+        <p>
+          Tel. +49 6123 605 250<br>
+          Fax +49 6123 630 025<br>
+          <a href="mailto:fries@altoservices.com">fries@altoservices.com</a>
+        </p>
+        <p>
+          Wallufer Strasse 5<br>
+          65343 Eltville
+        </p>
       </div>
 
-    </main>
-  </div>
+    </section>
 
-  <script>
-    const y = document.getElementById("year");
-    if (y) y.textContent = new Date().getFullYear();
-  </script>
+    <div class="bottom">
+      <div class="subline-pill">Interiors and Architecture</div>
+
+      <footer class="footer">
+        <div>© <span id="year"></span> Alto Engineering Associates GmbH</div>
+        <div>
+          <a href="impressum.html">Impressum</a> ·
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </footer>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
