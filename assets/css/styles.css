@@ -115,15 +115,16 @@ body{
    ============================================================ */
 .gallery{
   /* "block" centered like your reference */
-  width: min(1180px, 100%);
+  width: min(1380px, 100%); /**/
   margin: 0 auto;
 
   display: grid;
 
   /* each tile grows with screen, but stays elegant */
-  grid-template-columns: repeat(5, clamp(160px, 15vw, 210px));
+  /*grid-template-columns: repeat(5, clamp(160px, 15vw, 210px)); */
+   grid-template-columns: repeat(5, minmax(0,1fr)); 
 
-  gap: 18px;
+  gap: 20px;
 
   /* keeps the whole row centered when there is extra space */
   justify-content: center;
@@ -142,7 +143,7 @@ body{
   position: relative;
 
   /* bigger feel like your screenshot */
-  aspect-ratio: 1 / 1;               /* square like reference */
+  aspect-ratio: 4 / 3;               /* square like reference */
   min-height: 0;
 }
 
@@ -191,7 +192,9 @@ body{
   letter-spacing: .18em;
   text-transform: uppercase;
 
-  font-size: 20px;                   /* VERY BIG as requested */
+  /*font-size: 20px;                    VERY BIG as requested */
+  font-size: clamp(26px, 2.6vw, 44px);
+  width: min(1380px, 100%);
   line-height: 1.05;
 
   text-align:center;
