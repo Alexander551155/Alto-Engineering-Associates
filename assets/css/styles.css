@@ -170,21 +170,22 @@ body{
   margin: 0 auto;
 
   text-align:center;
-  padding: 12px 0;
+  padding: 16px 22px;
 
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
+  background: rgba(255,255,255,0.45);
+  border: 1px solid rgba(18,24,38,0.10);
+  box-shadow: 0 12px 34px rgba(0,0,0,0.07);
+  backdrop-filter: blur(10px);
+
+  border-radius: 8px;
 
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
-
   font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.05;
 
-  color: #6f8f63; /* sage green */
-  letter-spacing: .24em;
+  color: rgba(18,24,38,0.60);
+  letter-spacing: .22em;
   text-transform: uppercase;
 }
 
