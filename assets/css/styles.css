@@ -1,14 +1,11 @@
 /* =========================
-   ALTO – Elegant Single-Page CSS (restored + requested changes)
-   Restored from your first version:
-   - Topbar "ALTO ENGINEERING" (green)
-   - White header with green company name
-   - Background + stage like before
-   Added requested changes:
-   - 5 images in one row (desktop)
-   - Contact: white on green, but NOT full width (centered under images)
-   - Under images: "Interiors and Architecture"
-   - Impressum/Datenschutz: page-card restored
+   ALTO – Elegant Single-Page CSS (Desktop tuned)
+   - Topbar green
+   - White header with green brand
+   - Desktop: 5 bigger tiles centered
+   - Between: "Interiors and Architecture" pill
+   - Contact below: centered, elegant light background
+   - Impressum/Datenschutz: page-card stays
    ========================= */
 
 :root{
@@ -24,7 +21,7 @@
   --tile-bg: rgba(255,255,255,.22);
   --tile-shadow: 0 18px 45px rgba(0,0,0,.12);
 
-  --pill-bg: rgba(255,255,255,.62);
+  --pill-bg: rgba(255,255,255,.70);
   --pill-border: rgba(18,24,38,.10);
 
   --footer-bg: rgba(255,255,255,.55);
@@ -32,6 +29,10 @@
   --card-bg: rgba(255,255,255,.86);
   --card-border: rgba(18,24,38,.10);
   --card-shadow: 0 18px 55px rgba(0,0,0,.10);
+
+  /* Contact (elegant light) */
+  --contact-bg: rgba(255,255,255,.78);
+  --contact-border: rgba(111,143,99,.28);
 }
 
 *{ box-sizing:border-box; }
@@ -42,7 +43,6 @@ body{
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--ink);
 
-  /* Background like your first version */
   background:
     radial-gradient(900px 600px at 50% 0%, rgba(111,143,99,.10), transparent 70%),
     linear-gradient(180deg, rgba(240,251,245,0.30), rgba(255,255,255,0.45)),
@@ -52,7 +52,7 @@ body{
 }
 
 /* =========================
-   TOP BAR (RESTORED)
+   TOP BAR
    ========================= */
 .topbar{
   background: linear-gradient(90deg, var(--sage-dark), var(--sage));
@@ -65,7 +65,7 @@ body{
 }
 
 /* =========================
-   HEADER (WHITE + GREEN BRAND) RESTORED
+   HEADER (white + green brand)
    ========================= */
 .header{
   background: rgba(255,255,255,.90);
@@ -74,7 +74,7 @@ body{
 }
 
 .header-inner{
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 16px 16px;
   display:flex;
@@ -86,41 +86,43 @@ body{
   font-weight: 600;
   letter-spacing: .01em;
   color: var(--sage-dark);
-  font-size: clamp(26px, 4vw, 46px);
+  font-size: clamp(28px, 3.6vw, 48px);
   text-align:center;
 }
 
 /* =========================
-   SHELL + STAGE (RESTORED)
+   SHELL + STAGE
    ========================= */
 .shell{
-  max-width: 1080px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 18px 16px 28px;
 }
 
-/* Stage centers content and pushes bottom area down */
 .stage{
-  max-width: 980px;
+  max-width: 1180px;           /* wider stage so 5 tiles can be bigger */
   margin: 0 auto;
-  padding: 14px 0 0;
+  padding: 16px 0 0;
 
-  min-height: calc(100svh - 170px); /* approx topbar+header */
+  min-height: calc(100svh - 170px);
   display: flex;
   flex-direction: column;
 }
 
 /* =========================
-   GALLERY: 5 IMAGES IN ONE ROW (DESKTOP)
+   GALLERY (Desktop: 5 bigger tiles centered)
    ========================= */
 .gallery{
+  width: min(1080px, 100%);
+  margin: 0 auto;
+
   display:grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  gap: 18px;
   align-items: stretch;
 }
 
-/* IMAGE TILE */
+/* TILE */
 .tile{
   border-radius: 18px;
   overflow: hidden;
@@ -131,7 +133,8 @@ body{
   text-decoration:none;
   position: relative;
 
-  aspect-ratio: 4 / 3;
+  /* make them feel "bigger" + elegant like your sketch */
+  aspect-ratio: 1 / 1;      /* more square, matches the look you want */
   min-height: 0;
 }
 
@@ -145,7 +148,6 @@ body{
   transition: transform .45s ease, filter .45s ease;
 }
 
-/* Hover zoom (desktop only) */
 @media (hover:hover){
   .tile:hover img{
     transform: scale(1.06);
@@ -157,21 +159,42 @@ body{
 }
 
 /* =========================
-   CONTACT UNDER IMAGES (NOT FULL WIDTH)
-   White on green, centered like a premium pill/card
+   BETWEEN LINE: Interiors and Architecture (moved up)
+   ========================= */
+.subline-between{
+  margin: 14px auto 10px;
+}
+
+/* pill style (same as before but slightly more premium) */
+.subline-pill{
+  width: fit-content;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  color: rgba(18,24,38,.62);
+  letter-spacing: .20em;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align:center;
+  backdrop-filter: blur(8px);
+}
+
+/* =========================
+   CONTACT (Centered + elegant light background)
    ========================= */
 .contact-bar{
-  margin: 14px auto 0;           /* space under images */
-  width: min(560px, 100%);       /* not full monitor width */
-  padding: 14px 16px;
+  width: min(620px, 100%);
+  margin: 0 auto;
 
-  border-radius: 18px;
-  background: linear-gradient(160deg, var(--sage-dark), var(--sage));
-  border: 1px solid rgba(255,255,255,.22);
+  background: var(--contact-bg);
+  border: 1px solid var(--contact-border);
   box-shadow: var(--tile-shadow);
+  border-radius: 18px;
+  backdrop-filter: blur(10px);
 
+  padding: 16px 18px;
   text-align:center;
-  color:#fff;
 }
 
 .contact-bar h3{
@@ -179,47 +202,34 @@ body{
   font-size: 12px;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color:#fff;
+  color: var(--sage-dark);
 }
 
 .contact-bar p{
   margin: 4px 0;
   font-size: 12px;
-  line-height: 1.35;
-  color: rgba(255,255,255,.92);
+  line-height: 1.4;
+  color: rgba(18,24,38,.72);
 }
 
 .contact-bar a,
 .contact-bar a:visited{
-  color:#fff;
+  color: var(--sage-dark);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 /* =========================
-   BOTTOM AREA (subline + footer) RESTORED
+   BOTTOM AREA (footer only now)
    ========================= */
 .bottom{
   margin-top: auto;
   display: grid;
   justify-items: center;
   gap: 10px;
-  padding-top: 14px;
+  padding-top: 18px;
   padding-bottom: 6px;
-}
-
-.subline-pill{
-  width: fit-content;
-  padding: 10px 14px;
-  border-radius: 999px;
-  background: var(--pill-bg);
-  border: 1px solid var(--pill-border);
-  color: var(--muted);
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  font-size: 12px;
-  text-align:center;
 }
 
 .footer{
@@ -244,7 +254,7 @@ body{
 }
 
 /* =========================
-   PAGE CARD (RESTORED for impressum/datenschutz)
+   PAGE CARD (Impressum/Datenschutz)
    ========================= */
 .page-card{
   margin: 10px auto 0;
@@ -286,65 +296,25 @@ body{
 }
 
 /* =========================
-   MOBILE (best effort like your first version)
+   RESPONSIVE (left as safe defaults)
    ========================= */
-@media (max-width: 480px){
-  body{
-    background-attachment: scroll;
-    overflow: hidden;
+@media (max-width: 980px){
+  .gallery{
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
   }
+}
 
-  .topbar{
-    padding: 8px 10px;
-    font-size: 10px;
-    letter-spacing: .24em;
-  }
+@media (max-width: 560px){
+  body{ background-attachment: scroll; }
 
-  .header-inner{
-    padding: 12px 12px;
-  }
-
-  .brand{
-    font-size: 28px;
-    line-height: 1.05;
-  }
-
-  .shell{
-    padding: 10px 10px 12px;
-  }
-
-  .stage{
-    padding-top: 10px;
-    min-height: calc(100svh - 140px);
-  }
-
-  /* Gallery becomes 2 columns */
   .gallery{
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
   }
 
-  .tile{
-    aspect-ratio: 4 / 3;
-    border-radius: 16px;
-  }
-
-  .contact-bar{
-    width: 100%;
-    border-radius: 16px;
-    padding: 12px 12px;
-    margin-top: 10px;
-  }
-
-  .contact-bar h3{
-    font-size: 11px;
-    margin-bottom: 6px;
-  }
-
-  .contact-bar p{
-    font-size: 10.5px;
-    line-height: 1.25;
-  }
+  .tile{ border-radius: 16px; }
 
   .subline-pill{
     padding: 9px 12px;
@@ -352,91 +322,17 @@ body{
     letter-spacing: .16em;
   }
 
-  .footer{
-    padding: 9px 12px;
-    font-size: 11px;
-    line-height: 1.45;
-  }
-
-  .page-card{
+  .contact-bar{
     padding: 14px 12px;
     border-radius: 16px;
   }
 
-  .page-card h1{
-    font-size: 28px;
-  }
-}
-
-/* =========================
-   MOBILE LANDSCAPE (quer)
-   ========================= */
-@media (max-width: 900px) and (orientation: landscape){
-  body{
-    background-attachment: scroll;
-    overflow: hidden;
-  }
-
-  .topbar{
-    padding: 6px 10px;
-    font-size: 10px;
-    letter-spacing: .22em;
-  }
-
-  .header-inner{
-    padding: 10px 12px;
-  }
-
   .brand{
-    font-size: 22px;
+    font-size: 28px;
     line-height: 1.05;
   }
-
-  .shell{
-    padding: 8px 10px 10px;
-  }
-
-  .stage{
-    padding-top: 8px;
-    min-height: calc(100svh - 115px);
-  }
-
-  .gallery{
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  .tile{
-    aspect-ratio: 16 / 9;
-  }
-
-  .contact-bar{
-    width: min(560px, 100%);
-    padding: 10px 12px;
-    margin-top: 10px;
-  }
-
-  .bottom{
-    gap: 8px;
-    padding-top: 10px;
-  }
-
-  .subline-pill{
-    padding: 7px 10px;
-    font-size: 10.5px;
-    letter-spacing: .14em;
-  }
-
-  .footer{
-    padding: 7px 10px;
-    font-size: 10.5px;
-    line-height: 1.3;
-  }
 }
 
-/* =========================
-   TABLET
-   ========================= */
-@media (min-width: 481px) and (max-width: 900px){
-  .gallery{ gap: 12px; grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 360px){
+  .gallery{ grid-template-columns: 1fr; }
 }
