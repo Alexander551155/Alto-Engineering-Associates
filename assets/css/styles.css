@@ -139,7 +139,8 @@ body{
   position: relative;
 
   /* THIS makes them "half page" feeling */
-  height: clamp(190px, 28vh, 340px);  /* play with 28vh -> 34vh for even bigger */
+  /*height: clamp(190px, 28vh, 340px);  /* play with 28vh -> 34vh for even bigger */
+   height: clamp(220px, 34vh, 420px);
 }
 
 .tile img{
