@@ -164,10 +164,6 @@ body{
 /* ============================================================
    SUBLINE (Interiors...) – big + spaced
    ============================================================ */
-.subline-between{
-  margin: 0 auto var(--space-after-subline);
-}
-
 .subline-pill{
   display: block;
   width: min(1680px, calc(100vw - 72px));
@@ -187,10 +183,11 @@ body{
   font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.05;
 
-  color: #9c8b5a;
-  letter-spacing: .28em;
+  color: #6f8f63; /* sage green */
+  letter-spacing: .24em;
   text-transform: uppercase;
 }
+
 
 
 /* ============================================================
