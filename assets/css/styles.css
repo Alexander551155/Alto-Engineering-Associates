@@ -36,8 +36,11 @@
   --contact-shadow: 0 22px 80px rgba(0,0,0,.12);
 
   /* Spacing (desktop) */
-  --space-after-gallery: 44px;
-  --space-after-subline: 34px;
+  /*--space-after-gallery: 44px;
+  --space-after-subline: 34px; */
+  --space-after-gallery: 70px;
+  --space-after-subline: 50px;
+
 
   --radius-tile: 26px;
   --radius-card: 22px;
