@@ -450,6 +450,11 @@ body{
 /* Mobile Portrait: 2x2 only (hide 5th) */
 @media (max-width: 480px) and (orientation: portrait){
   .gallery .tile:nth-child(5){ display:none; }
+   
+  .gallery{
+    margin-top: 10px;   /* oder 0px – wie es vorher war */
+  }
+
 
   /* ✅ Topbar immer 1 Zeile */
   .topbar{
