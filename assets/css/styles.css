@@ -82,14 +82,21 @@ body{
   justify-content:center;
 }
 
-.brand{
+/*.brand{
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
   letter-spacing: .01em;
   color: var(--sage-dark);
   font-size: clamp(30px, 3.6vw, 54px);
   text-align:center;
+} */
+.brand{
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #6a7f5f;   /* leicht entsättigtes Grün */
 }
+
 
 /* =========================
    SHELL + STAGE
