@@ -50,6 +50,13 @@ body{
 
   overflow: auto;
   /*overflow-x: hidden; */
+     /* ✅ HIER rein */
+  animation: fadein 1.2s ease;
+}
+/* ✅ und direkt danach */
+@keyframes fadein{
+  from{opacity:0}
+  to{opacity:1}
 }
 
 /* =========================
