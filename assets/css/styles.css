@@ -1,10 +1,10 @@
 /* =========================
-   ALTO – Desktop: BIG wide tiles + big headline
-   Fix:
-   - remove the width bottleneck (stage/shell max-width)
-   - gallery uses almost full viewport width
-   - tiles more rectangular + less round (more "eckig")
-   - "Interiors and Architecture" much larger and same width as gallery
+   ALTO – Premium Hero Layout (Desktop first)
+   - 5 BIG images (true hero height via fixed/clamp height)
+   - rounded corners (NOT "eckig")
+   - big "INTERIORS AND ARCHITECTURE" as wide as image row
+   - contact card with elegant emoji rows
+   - Impressum/Datenschutz page-card stays
    ========================= */
 
 :root{
@@ -18,9 +18,9 @@
 
   --tile-border: rgba(255,255,255,.55);
   --tile-bg: rgba(255,255,255,.18);
-  --tile-shadow: 0 22px 70px rgba(0,0,0,.14);
+  --tile-shadow: 0 26px 90px rgba(0,0,0,.14);
 
-  --pill-bg: rgba(255,255,255,.78);
+  --pill-bg: rgba(255,255,255,.82);
   --pill-border: rgba(18,24,38,.10);
 
   --footer-bg: rgba(255,255,255,.55);
@@ -29,10 +29,10 @@
   --card-border: rgba(18,24,38,.10);
   --card-shadow: 0 18px 55px rgba(0,0,0,.10);
 
-  /* Contact: elegant sage glass */
-  --contact-bg: rgba(111,143,99,.22);
-  --contact-border: rgba(255,255,255,.35);
-  --contact-shadow: 0 24px 80px rgba(0,0,0,.14);
+  /* Contact: elegant, cool glass (not beige-heavy) */
+  --contact-bg: rgba(255,255,255,.72);
+  --contact-border: rgba(255,255,255,.38);
+  --contact-shadow: 0 22px 80px rgba(0,0,0,.12);
 }
 
 *{ box-sizing:border-box; }
@@ -91,20 +91,16 @@ body{
 }
 
 /* =========================
-   SHELL + STAGE (IMPORTANT FIX!)
-   Remove the bottleneck:
-   - make stage wide
+   SHELL + STAGE (wide)
    ========================= */
 .shell{
-  /* was max-width: 1400px */
-  max-width: 1800px;
+  max-width: 1900px;
   margin: 0 auto;
   padding: 14px 18px 28px;
 }
 
 .stage{
-  /* was max-width: 1320px */
-  max-width: 1800px;
+  max-width: 1900px;
   margin: 0 auto;
   padding: 18px 0 0;
 
@@ -114,12 +110,11 @@ body{
 }
 
 /* ============================================================
-   GALLERY: almost full screen width
-   This is what makes the 5 images BIG.
+   GALLERY – BIG HERO ROW
+   KEY: we set explicit HEIGHT on .tile to make images feel huge.
    ============================================================ */
 .gallery{
-  /* near full viewport width, but with safe side padding */
-  width: min(1600px, calc(100vw - 64px));
+  width: min(1680px, calc(100vw - 72px));
   margin: 0 auto;
 
   display: grid;
@@ -130,10 +125,9 @@ body{
   align-items: stretch;
 }
 
-/* TILE: more “eckig” + large rectangle */
+/* BIG rounded tiles */
 .tile{
-  /* eckig: reduce rounding */
-  border-radius: 12px;          /* set to 0px if you want totally sharp */
+  border-radius: 26px;                /* rounded + elegant */
   overflow: hidden;
 
   border: 1px solid var(--tile-border);
@@ -144,8 +138,8 @@ body{
   text-decoration:none;
   position: relative;
 
-  /* rectangular + elegant */
-  aspect-ratio: 16 / 11;        /* flatter than 4/3 -> feels bigger */
+  /* THIS makes them "half page" feeling */
+  height: clamp(190px, 28vh, 340px);  /* play with 28vh -> 34vh for even bigger */
 }
 
 .tile img{
@@ -163,12 +157,12 @@ body{
     filter: saturate(1.06);
   }
   .tile:hover{
-    box-shadow: 0 34px 110px rgba(0,0,0,.18);
+    box-shadow: 0 36px 120px rgba(0,0,0,.18);
   }
 }
 
 /* ============================================================
-   BIG TEXT: same width as gallery + MUCH bigger
+   BIG SUBLINE – very large & same width as gallery
    ============================================================ */
 .subline-between{
   margin: 18px auto 14px;
@@ -176,66 +170,96 @@ body{
 
 .subline-pill{
   display: block;
-  width: min(1600px, calc(100vw - 64px));
+  width: min(1680px, calc(100vw - 72px));
   margin: 0 auto;
 
   text-align:center;
-  padding: 16px 22px;
+  padding: 18px 26px;
   border-radius: 999px;
 
   background: var(--pill-bg);
   border: 1px solid var(--pill-border);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
 
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
 
-  /* MUCH larger */
-  font-size: clamp(34px, 3.2vw, 60px);
+  /* VERY BIG */
+  font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.02;
 
-  color: rgba(18,24,38,.55);
-  letter-spacing: .22em;
+  color: rgba(18,24,38,.52);
+  letter-spacing: .24em;
   text-transform: uppercase;
 
-  box-shadow: 0 16px 46px rgba(0,0,0,.08);
+  box-shadow: 0 18px 52px rgba(0,0,0,.10);
 }
 
 /* ============================================================
-   CONTACT: elegant sage glass (not beige)
+   CONTACT – elegant card with emoji rows
    ============================================================ */
 .contact-bar{
-  width: min(860px, calc(100vw - 64px));
+  width: min(980px, calc(100vw - 72px));
   margin: 0 auto;
 
   background: var(--contact-bg);
   border: 1px solid var(--contact-border);
   box-shadow: var(--contact-shadow);
-  border-radius: 16px;
-  backdrop-filter: blur(14px);
+  border-radius: 22px;
+  backdrop-filter: blur(16px);
 
   padding: 18px 22px;
   text-align:center;
 }
 
+/* small caption */
 .contact-bar h3{
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   font-size: 12px;
   letter-spacing: .16em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.92);
+  color: var(--sage-dark);
 }
 
-.contact-bar p{
-  margin: 4px 0;
+/* list layout */
+.contact-list{
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: min(680px, 100%);
+  display: grid;
+  gap: 10px;
+}
+
+.contact-list li{
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  align-items: center;
+  gap: 10px;
+
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,.40);
+  border: 1px solid rgba(18,24,38,.06);
+}
+
+.contact-list .ico{
+  font-size: 16px;
+  line-height: 1;
+  opacity: .95;
+}
+
+.contact-list .txt{
   font-size: 13px;
-  line-height: 1.45;
-  color: rgba(255,255,255,.86);
+  line-height: 1.35;
+  color: rgba(18,24,38,.72);
 }
 
-.contact-bar a,
-.contact-bar a:visited{
-  color: #fff;
+.contact-list a,
+.contact-list a:visited{
+  color: var(--sage-dark);
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -317,7 +341,7 @@ body{
 }
 
 /* =========================
-   RESPONSIVE (we tune later as you requested)
+   Responsive (we will do your special mobile-horizontal next)
    ========================= */
 @media (max-width: 1100px){
   .gallery{
@@ -325,11 +349,15 @@ body{
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
+  .tile{
+    height: clamp(170px, 26vh, 280px);
+    border-radius: 22px;
+  }
   .subline-pill{
     width: calc(100vw - 32px);
     font-size: clamp(22px, 3vw, 34px);
-    padding: 12px 16px;
-    letter-spacing: .16em;
+    padding: 14px 16px;
+    letter-spacing: .18em;
   }
   .contact-bar{
     width: calc(100vw - 32px);
@@ -344,17 +372,20 @@ body{
     gap: 10px;
   }
 
-  .tile{ border-radius: 12px; }
+  .tile{
+    height: 180px;
+    border-radius: 18px;
+  }
 
   .subline-pill{
     font-size: 22px;
-    padding: 12px 14px;
+    padding: 14px 14px;
     letter-spacing: .14em;
   }
 
   .contact-bar{
     padding: 14px 12px;
-    border-radius: 14px;
+    border-radius: 16px;
   }
 
   .brand{
