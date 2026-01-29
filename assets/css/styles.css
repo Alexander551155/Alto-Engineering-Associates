@@ -82,10 +82,10 @@ body{
 .header-inner{
   width: var(--hero-width);       /* ✅ same width as gallery */
   margin: 0 auto;
-  padding: 10px 0;
+  /*padding: 10px 0; */
 }
 
-.brand{
+/*.brand{
   width: 100%;
   text-align: center;
 
@@ -94,8 +94,20 @@ body{
   letter-spacing: 0.06em;
   color: #6a7f5f;
 
-  /* ✅ smaller + elegant */
+  /* ✅ smaller + elegant 
   font-size: clamp(24px, 2.4vw, 42px);
+} */
+.brand{
+  width: 100%;
+  text-align: center;
+
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;          /* ✅ fetter */
+  letter-spacing: 0.02em;    /* ✅ minimaler Abstand */
+  color: #6a7f5f;
+
+  font-size: clamp(34px, 3.2vw, 56px); /* ✅ größer */
+  line-height: 1.05;
 }
 
 /* =========================
@@ -187,7 +199,7 @@ body{
   margin: 0 auto var(--space-after-subline);
 }
 
-.subline-pill{
+/*.subline-pill{
   width: 100%;
   text-align: center;
 
@@ -205,7 +217,27 @@ body{
   border-bottom: 1px solid rgba(94,125,84,0.55);
 
   animation: sublineReveal 900ms ease both;
+}*/
+
+.subline-pill{
+  width: 100%;
+  text-align: center;
+
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;               /* ✅ gleich wie Brand */
+  text-transform: uppercase;
+
+  font-size: clamp(34px, 3.2vw, 56px);  /* ✅ gleich wie Brand */
+  line-height: 1.05;
+
+  color: var(--sage-dark);
+  padding: 10px 0 16px;
+
+  border-bottom: 1px solid rgba(94,125,84,0.55);
+  animation: sublineReveal 900ms ease both; 
 }
+
 
 @keyframes sublineReveal{
   from{ opacity:0; transform: translateY(10px); }
@@ -234,7 +266,7 @@ body{
   margin: 0 auto;
 }
 
-.contact-pill{
+/*.contact-pill{
   width: min(980px, 100%);
   margin: 0 auto;
 
@@ -249,7 +281,27 @@ body{
   color: rgba(255,255,255,.92);
   font-size: 12.5px;
   line-height: 1.55;
+}*/
+.contact-pill{
+  width: min(980px, 100%);
+  margin: 0 auto;
+
+  text-align:center;
+  padding: 18px 22px;
+
+  /* ✅ eckig */
+  border-radius: 8px;
+
+  /* ✅ exakt wie Topbar */
+  background: linear-gradient(90deg, var(--sage-dark), var(--sage));
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 18px 52px rgba(0,0,0,.12);
+
+  color: rgba(255,255,255,.94);
+  font-size: 12.7px;
+  line-height: 1.55;
 }
+
 
 .contact-pill strong{
   display:block;
