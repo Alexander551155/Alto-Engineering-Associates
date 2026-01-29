@@ -1,11 +1,9 @@
 /* =========================
    ALTO – Premium Hero Layout (Desktop refined)
-   Changes:
-   - NO emoji
-   - Elegant inline-icon rows in contact
-   - Much more spacing: Images -> Title -> Contact
-   - Keep big hero images (height via clamp)
-   - Keep Impressum/Datenschutz page-card
+   Now:
+   - Contact becomes a slim pill (like subline), no big box
+   - Clear spacing control via margins (guaranteed visible)
+   - Icons/emoji removed (contact is pure elegant text)
    ========================= */
 
 :root{
@@ -30,20 +28,7 @@
   --card-border: rgba(18,24,38,.10);
   --card-shadow: 0 18px 55px rgba(0,0,0,.10);
 
-  /* Contact: elegant glass, not too beige */
-  --contact-bg: rgba(255,255,255,.70);
-  --contact-border: rgba(255,255,255,.40);
-  --contact-shadow: 0 22px 80px rgba(0,0,0,.12);
-
-  /* Spacing (desktop) */
-  /*--space-after-gallery: 44px;
-  --space-after-subline: 34px; */
-  --space-after-gallery: 70px;
-  --space-after-subline: 50px;
-
-
   --radius-tile: 26px;
-  --radius-card: 22px;
 }
 
 *{ box-sizing:border-box; }
@@ -133,6 +118,9 @@ body{
   gap: 22px;
   justify-content: center;
   align-items: stretch;
+
+  /* IMPORTANT: space under images (guaranteed) */
+  margin-bottom: 56px;
 }
 
 .tile{
@@ -170,10 +158,10 @@ body{
 }
 
 /* ============================================================
-   BIG SUBLINE – very large & spaced down
+   SUBLINE (Interiors...) – moved down + more air
    ============================================================ */
 .subline-between{
-  margin: var(--space-after-gallery) auto var(--space-after-subline);
+  margin: 0 auto 44px;  /* after gallery already has bottom margin */
 }
 
 .subline-pill{
@@ -203,79 +191,53 @@ body{
 }
 
 /* ============================================================
-   CONTACT – elegant card with SVG icons
+   CONTACT – now also a slim pill (no extra box)
    ============================================================ */
 .contact-bar{
-  width: min(980px, calc(100vw - 72px));
+  width: min(1680px, calc(100vw - 72px));
   margin: 0 auto;
 
-  background: var(--contact-bg);
-  border: 1px solid var(--contact-border);
-  box-shadow: var(--contact-shadow);
-  border-radius: var(--radius-card);
-  backdrop-filter: blur(16px);
+  /* no background / no border / no shadow here */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
 
-  padding: 20px 22px;
+  /* more space between title and contact */
+  margin-top: 26px;
 }
 
-.contact-bar h3{
-  margin: 0 0 14px;
-  text-align:center;
+.contact-pill{
+  display: block;
+  width: min(980px, 100%);     /* like your earlier contact width but pill */
+  margin: 0 auto;
 
+  text-align:center;
+  padding: 16px 22px;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,.78);
+  border: 1px solid rgba(18,24,38,.10);
+  backdrop-filter: blur(14px);
+
+  color: rgba(18,24,38,.68);
+  font-size: 13px;
+  line-height: 1.5;
+
+  box-shadow: 0 18px 52px rgba(0,0,0,.10);
+}
+
+.contact-pill strong{
+  display:block;
   font-size: 12px;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--sage-dark);
+  margin-bottom: 6px;
 }
 
-/* rows */
-.contact-grid{
-  width: min(720px, 100%);
-  margin: 0 auto;
-
-  display: grid;
-  gap: 10px;
-}
-
-.contact-row{
-  display: grid;
-  grid-template-columns: 34px 1fr;
-  align-items: center;
-  gap: 12px;
-
-  padding: 12px 14px;
-  border-radius: 14px;
-
-  background: rgba(255,255,255,.42);
-  border: 1px solid rgba(18,24,38,.06);
-}
-
-.contact-ico{
-  width: 34px;
-  height: 34px;
-  display:grid;
-  place-items:center;
-
-  border-radius: 12px;
-  background: rgba(111,143,99,.12);
-  border: 1px solid rgba(111,143,99,.18);
-}
-
-.contact-ico svg{
-  width: 18px;
-  height: 18px;
-  display:block;
-  color: var(--sage-dark);
-}
-
-.contact-text{
-  font-size: 13px;
-  line-height: 1.35;
-  color: rgba(18,24,38,.72);
-}
-
-.contact-text a,
-.contact-text a:visited{
+.contact-pill a,
+.contact-pill a:visited{
   color: var(--sage-dark);
   font-weight: 700;
   text-decoration: underline;
@@ -358,18 +320,14 @@ body{
 }
 
 /* =========================
-   Responsive (we tune mobile-horizontal next)
+   RESPONSIVE (we tune later)
    ========================= */
 @media (max-width: 1100px){
-  :root{
-    --space-after-gallery: 28px;
-    --space-after-subline: 22px;
-  }
-
   .gallery{
     width: calc(100vw - 32px);
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+    margin-bottom: 34px;
   }
 
   .tile{
@@ -384,8 +342,17 @@ body{
     letter-spacing: .18em;
   }
 
+  .subline-between{
+    margin-bottom: 26px;
+  }
+
   .contact-bar{
     width: calc(100vw - 32px);
+    margin-top: 18px;
+  }
+
+  .contact-pill{
+    width: min(780px, 100%);
   }
 }
 
@@ -395,6 +362,7 @@ body{
   .gallery{
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    margin-bottom: 22px;
   }
 
   .tile{
@@ -402,19 +370,15 @@ body{
     border-radius: 18px;
   }
 
-  .contact-row{
-    grid-template-columns: 32px 1fr;
-    padding: 10px 12px;
+  .subline-pill{
+    font-size: 22px;
+    padding: 14px 14px;
+    letter-spacing: .14em;
   }
 
-  .contact-ico{
-    width: 32px;
-    height: 32px;
-  }
-
-  .contact-ico svg{
-    width: 17px;
-    height: 17px;
+  .contact-pill{
+    font-size: 12.5px;
+    padding: 14px 14px;
   }
 
   .brand{
