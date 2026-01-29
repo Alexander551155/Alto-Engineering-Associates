@@ -5,76 +5,64 @@
   <title>Alto Engineering Associates GmbH</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Elegant Serif + Clean Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
 
-<header class="header">
-  <div class="header-inner">
-    <div class="brand">Alto Engineering Associates GmbH</div>
-  </div>
-</header>
+  <!-- Optional: ganz dünner Balken oben (clean) -->
+  <div class="topbar"></div>
 
-<div class="shell">
-  <main class="stage">
+  <header class="header" role="banner">
+    <div class="brand">Alto Engineering Associates GmbH</div>
+  </header>
+
+  <main class="stage" role="main">
 
     <section class="grid" aria-label="Galerie">
+      <!-- Reihe 1 -->
+      <div class="tile"><img src="img/18.jpeg" alt="Projektbild 1"></div>
+      <div class="tile"><img src="img/1.jpeg"  alt="Projektbild 2"></div>
+      <div class="tile"><img src="img/6.jpeg"  alt="Projektbild 3"></div>
 
-      <a class="tile" href="#">
-        <img src="img/18.jpeg" alt="Projektbild 1">
-      </a>
+      <!-- Reihe 2 -->
+      <div class="tile"><img src="img/7.jpeg"  alt="Projektbild 4"></div>
 
-      <a class="tile" href="#">
-        <img src="img/1.jpeg" alt="Projektbild 2">
-      </a>
-
-      <a class="tile" href="#">
-        <img src="img/6.jpeg" alt="Projektbild 3">
-      </a>
-
-      <a class="tile" href="#">
-        <img src="img/7.jpeg" alt="Projektbild 4">
-      </a>
-
-      <a class="tile" href="#">
-        <img src="img/16.jpeg" alt="Projektbild 5">
-      </a>
-
-      <div class="tile contact">
-        <h3>Kontakt</h3>
-        <p>
+      <!-- Kontakt (weiß auf grün) -->
+      <div class="tile tile--contact" aria-label="Kontakt">
+        <div class="contact-title">Kontakt</div>
+        <div class="contact-body">
           Tel. +49 6123 605 250<br>
           Fax +49 6123 630 025<br>
           <a href="mailto:fries@altoservices.com">fries@altoservices.com</a>
-        </p>
-        <p>
+          <span class="contact-sep"></span>
           Wallufer Strasse 5<br>
           65343 Eltville
-        </p>
+        </div>
       </div>
 
+      <div class="tile"><img src="img/16.jpeg" alt="Projektbild 5"></div>
     </section>
 
-    <div class="bottom">
-      <div class="subline-pill">Interiors and Architecture</div>
+    <div class="below">
+      <div class="subline">Interiors · Architecture</div>
 
       <footer class="footer">
         <div>© <span id="year"></span> Alto Engineering Associates GmbH</div>
-        <div>
-          <a href="impressum.html">Impressum</a> ·
-          <a href="datenschutz.html">Datenschutz</a>
+        <div class="footer-links">
+          <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a>
         </div>
       </footer>
     </div>
 
   </main>
-</div>
 
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  <script>
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
