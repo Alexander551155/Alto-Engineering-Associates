@@ -121,12 +121,14 @@ body{
    GALLERY – 5 BIG HERO IMAGES
    ============================================================ */
 .gallery{
-  width: var(--hero-width);
+   width: 100%;
+  /*width: var(--hero-width);*/
+  padding: 0 24px;
   margin: 0 auto var(--space-after-gallery);
 
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 22px;
+  gap: 16px; /**/
 
   align-items: stretch;
 }
@@ -145,7 +147,9 @@ body{
   position: relative;
 
   /* ✅ make them really BIG */
-  height: clamp(260px, 34vh, 520px);
+  /*height: clamp(260px, 34vh, 520px);*/
+  height: clamp(260px, 38vh, 520px);
+   
 }
 
 .tile img{
