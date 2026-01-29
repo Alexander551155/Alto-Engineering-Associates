@@ -101,8 +101,11 @@ body{
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: #6a7f5f;   /* leicht entsättigtes Grün */
+  color: #6a7f5f;
+  font-size: clamp(30px, 3.6vw, 54px);
+  text-align:center;
 }
+
 
 
 /* =========================
@@ -214,7 +217,7 @@ body{
 .subline-pill span{
   display: inline-block;
   padding: 6px 14px;
-  background: rgba(0,0,0,0.065);   /* sehr leichtes Grau */
+  background: rgba(0,0,0,0.055);   /* sehr leichtes Grau <- denkler 0.55-0.65-0.70  heller-> */
   border-radius: 4px;
 }
 
