@@ -1,10 +1,10 @@
 /* =========================
-   ALTO – Elegant Single-Page CSS (Desktop tuned)
+   ALTO – Elegant Single-Page CSS (Desktop focus)
    - Topbar green
    - White header with green brand
-   - Desktop: 5 bigger tiles centered
-   - Between: "Interiors and Architecture" pill
-   - Contact below: centered, elegant light background
+   - Desktop: 5 BIG tiles centered
+   - "Interiors and Architecture" VERY BIG under images
+   - Contact below (elegant light background)
    - Impressum/Datenschutz: page-card stays
    ========================= */
 
@@ -21,7 +21,7 @@
   --tile-bg: rgba(255,255,255,.22);
   --tile-shadow: 0 18px 45px rgba(0,0,0,.12);
 
-  --pill-bg: rgba(255,255,255,.70);
+  --pill-bg: rgba(255,255,255,.74);
   --pill-border: rgba(18,24,38,.10);
 
   --footer-bg: rgba(255,255,255,.55);
@@ -31,8 +31,9 @@
   --card-shadow: 0 18px 55px rgba(0,0,0,.10);
 
   /* Contact (elegant light) */
-  --contact-bg: rgba(255,255,255,.78);
-  --contact-border: rgba(111,143,99,.28);
+  --contact-bg: rgba(255,255,255,.80);
+  --contact-border: rgba(111,143,99,.26);
+  --contact-shadow: 0 20px 60px rgba(0,0,0,.10);
 }
 
 *{ box-sizing:border-box; }
@@ -86,7 +87,7 @@ body{
   font-weight: 600;
   letter-spacing: .01em;
   color: var(--sage-dark);
-  font-size: clamp(28px, 3.6vw, 48px);
+  font-size: clamp(28px, 3.8vw, 50px);
   text-align:center;
 }
 
@@ -94,37 +95,44 @@ body{
    SHELL + STAGE
    ========================= */
 .shell{
-  max-width: 1280px;
+  max-width: 1400px;                 /* more room for large centered row */
   margin: 0 auto;
   padding: 18px 16px 28px;
 }
 
 .stage{
-  max-width: 1180px;           /* wider stage so 5 tiles can be bigger */
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 16px 0 0;
+  padding: 18px 0 0;
 
   min-height: calc(100svh - 170px);
   display: flex;
   flex-direction: column;
 }
 
-/* =========================
-   GALLERY (Desktop: 5 bigger tiles centered)
-   ========================= */
+/* ============================================================
+   DESKTOP: 5 BIG IMAGES CENTERED (main change)
+   ============================================================ */
 .gallery{
-  width: min(1080px, 100%);
+  /* "block" centered like your reference */
+  width: min(1180px, 100%);
   margin: 0 auto;
 
-  display:grid;
-  grid-template-columns: repeat(5, minmax(160px, 1fr));
+  display: grid;
+
+  /* each tile grows with screen, but stays elegant */
+  grid-template-columns: repeat(5, clamp(160px, 15vw, 210px));
+
   gap: 18px;
+
+  /* keeps the whole row centered when there is extra space */
+  justify-content: center;
   align-items: stretch;
 }
 
 /* TILE */
 .tile{
-  border-radius: 18px;
+  border-radius: 22px;               /* more premium rounding */
   overflow: hidden;
   border: 1px solid var(--tile-border);
   background: var(--tile-bg);
@@ -133,8 +141,8 @@ body{
   text-decoration:none;
   position: relative;
 
-  /* make them feel "bigger" + elegant like your sketch */
-  aspect-ratio: 1 / 1;      /* more square, matches the look you want */
+  /* bigger feel like your screenshot */
+  aspect-ratio: 1 / 1;               /* square like reference */
   min-height: 0;
 }
 
@@ -148,80 +156,93 @@ body{
   transition: transform .45s ease, filter .45s ease;
 }
 
+/* Hover zoom (desktop only) */
 @media (hover:hover){
   .tile:hover img{
     transform: scale(1.06);
     filter: saturate(1.05);
   }
   .tile:hover{
-    box-shadow: 0 28px 70px rgba(0,0,0,.16);
+    box-shadow: 0 30px 80px rgba(0,0,0,.16);
   }
 }
 
-/* =========================
-   BETWEEN LINE: Interiors and Architecture (moved up)
-   ========================= */
+/* ============================================================
+   BIG SUBLINE BETWEEN IMAGES AND CONTACT (main change)
+   ============================================================ */
 .subline-between{
-  margin: 14px auto 10px;
+  margin: 16px auto 12px;            /* directly under images */
 }
 
-/* pill style (same as before but slightly more premium) */
+/* make it VERY BIG + elegant */
 .subline-pill{
   width: fit-content;
-  padding: 10px 16px;
+  padding: 12px 22px;
   border-radius: 999px;
+
   background: var(--pill-bg);
   border: 1px solid var(--pill-border);
+
+  /* elegant type */
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+
   color: rgba(18,24,38,.62);
-  letter-spacing: .20em;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  font-size: 12px;
+
+  font-size: 20px;                   /* VERY BIG as requested */
+  line-height: 1.05;
+
   text-align:center;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+
+  /* subtle lift */
+  box-shadow: 0 14px 35px rgba(0,0,0,.08);
 }
 
-/* =========================
-   CONTACT (Centered + elegant light background)
-   ========================= */
+/* ============================================================
+   CONTACT (below, centered, elegant light)
+   ============================================================ */
 .contact-bar{
-  width: min(620px, 100%);
+  width: min(720px, 100%);           /* a bit wider (matches the new scale) */
   margin: 0 auto;
 
   background: var(--contact-bg);
   border: 1px solid var(--contact-border);
-  box-shadow: var(--tile-shadow);
-  border-radius: 18px;
-  backdrop-filter: blur(10px);
+  box-shadow: var(--contact-shadow);
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
 
-  padding: 16px 18px;
+  padding: 18px 22px;
   text-align:center;
 }
 
 .contact-bar h3{
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-size: 12px;
-  letter-spacing: .12em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--sage-dark);
 }
 
 .contact-bar p{
   margin: 4px 0;
-  font-size: 12px;
-  line-height: 1.4;
-  color: rgba(18,24,38,.72);
+  font-size: 12.5px;
+  line-height: 1.45;
+  color: rgba(18,24,38,.70);
 }
 
 .contact-bar a,
 .contact-bar a:visited{
   color: var(--sage-dark);
-  font-weight: 600;
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
 /* =========================
-   BOTTOM AREA (footer only now)
+   BOTTOM AREA (footer)
    ========================= */
 .bottom{
   margin-top: auto;
@@ -254,7 +275,7 @@ body{
 }
 
 /* =========================
-   PAGE CARD (Impressum/Datenschutz)
+   PAGE CARD (Impressum/Datenschutz) - unchanged
    ========================= */
 .page-card{
   margin: 10px auto 0;
@@ -296,13 +317,24 @@ body{
 }
 
 /* =========================
-   RESPONSIVE (left as safe defaults)
+   RESPONSIVE (safe defaults)
+   We'll do the "mobile landscape hide 1 image + contact same width"
+   in the next step, like you requested.
    ========================= */
-@media (max-width: 980px){
+@media (max-width: 1100px){
   .gallery{
     width: 100%;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
+  }
+
+  .subline-pill{
+    font-size: 16px;
+    padding: 10px 16px;
+  }
+
+  .contact-bar{
+    width: min(640px, 100%);
   }
 }
 
@@ -317,9 +349,9 @@ body{
   .tile{ border-radius: 16px; }
 
   .subline-pill{
-    padding: 9px 12px;
-    font-size: 11px;
-    letter-spacing: .16em;
+    font-size: 14px;
+    padding: 10px 14px;
+    letter-spacing: .14em;
   }
 
   .contact-bar{
