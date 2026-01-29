@@ -1,10 +1,11 @@
 /* =========================
-   ALTO – Premium Hero Layout (Desktop first)
-   - 5 BIG images (true hero height via fixed/clamp height)
-   - rounded corners (NOT "eckig")
-   - big "INTERIORS AND ARCHITECTURE" as wide as image row
-   - contact card with elegant emoji rows
-   - Impressum/Datenschutz page-card stays
+   ALTO – Premium Hero Layout (Desktop refined)
+   Changes:
+   - NO emoji
+   - Elegant inline-icon rows in contact
+   - Much more spacing: Images -> Title -> Contact
+   - Keep big hero images (height via clamp)
+   - Keep Impressum/Datenschutz page-card
    ========================= */
 
 :root{
@@ -29,10 +30,17 @@
   --card-border: rgba(18,24,38,.10);
   --card-shadow: 0 18px 55px rgba(0,0,0,.10);
 
-  /* Contact: elegant, cool glass (not beige-heavy) */
-  --contact-bg: rgba(255,255,255,.72);
-  --contact-border: rgba(255,255,255,.38);
+  /* Contact: elegant glass, not too beige */
+  --contact-bg: rgba(255,255,255,.70);
+  --contact-border: rgba(255,255,255,.40);
   --contact-shadow: 0 22px 80px rgba(0,0,0,.12);
+
+  /* Spacing (desktop) */
+  --space-after-gallery: 44px;
+  --space-after-subline: 34px;
+
+  --radius-tile: 26px;
+  --radius-card: 22px;
 }
 
 *{ box-sizing:border-box; }
@@ -91,7 +99,7 @@ body{
 }
 
 /* =========================
-   SHELL + STAGE (wide)
+   SHELL + STAGE
    ========================= */
 .shell{
   max-width: 1900px;
@@ -111,7 +119,6 @@ body{
 
 /* ============================================================
    GALLERY – BIG HERO ROW
-   KEY: we set explicit HEIGHT on .tile to make images feel huge.
    ============================================================ */
 .gallery{
   width: min(1680px, calc(100vw - 72px));
@@ -125,9 +132,8 @@ body{
   align-items: stretch;
 }
 
-/* BIG rounded tiles */
 .tile{
-  border-radius: 26px;                /* rounded + elegant */
+  border-radius: var(--radius-tile);
   overflow: hidden;
 
   border: 1px solid var(--tile-border);
@@ -138,9 +144,7 @@ body{
   text-decoration:none;
   position: relative;
 
-  /* THIS makes them "half page" feeling */
-  /*height: clamp(190px, 28vh, 340px);  /* play with 28vh -> 34vh for even bigger */
-   height: clamp(220px, 34vh, 420px);
+  height: clamp(210px, 32vh, 420px);
 }
 
 .tile img{
@@ -163,10 +167,10 @@ body{
 }
 
 /* ============================================================
-   BIG SUBLINE – very large & same width as gallery
+   BIG SUBLINE – very large & spaced down
    ============================================================ */
 .subline-between{
-  margin: 18px auto 14px;
+  margin: var(--space-after-gallery) auto var(--space-after-subline);
 }
 
 .subline-pill{
@@ -185,7 +189,6 @@ body{
   font-family: "Cormorant Garamond", serif;
   font-weight: 600;
 
-  /* VERY BIG */
   font-size: clamp(36px, 3.4vw, 64px);
   line-height: 1.02;
 
@@ -197,7 +200,7 @@ body{
 }
 
 /* ============================================================
-   CONTACT – elegant card with emoji rows
+   CONTACT – elegant card with SVG icons
    ============================================================ */
 .contact-bar{
   width: min(980px, calc(100vw - 72px));
@@ -206,60 +209,70 @@ body{
   background: var(--contact-bg);
   border: 1px solid var(--contact-border);
   box-shadow: var(--contact-shadow);
-  border-radius: 22px;
+  border-radius: var(--radius-card);
   backdrop-filter: blur(16px);
 
-  padding: 18px 22px;
-  text-align:center;
+  padding: 20px 22px;
 }
 
-/* small caption */
 .contact-bar h3{
-  margin: 0 0 12px;
+  margin: 0 0 14px;
+  text-align:center;
+
   font-size: 12px;
   letter-spacing: .16em;
   text-transform: uppercase;
   color: var(--sage-dark);
 }
 
-/* list layout */
-.contact-list{
-  list-style: none;
-  padding: 0;
+/* rows */
+.contact-grid{
+  width: min(720px, 100%);
   margin: 0 auto;
-  width: min(680px, 100%);
+
   display: grid;
   gap: 10px;
 }
 
-.contact-list li{
+.contact-row{
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 34px 1fr;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 
-  text-align: left;
-  padding: 10px 12px;
+  padding: 12px 14px;
   border-radius: 14px;
 
-  background: rgba(255,255,255,.40);
+  background: rgba(255,255,255,.42);
   border: 1px solid rgba(18,24,38,.06);
 }
 
-.contact-list .ico{
-  font-size: 16px;
-  line-height: 1;
-  opacity: .95;
+.contact-ico{
+  width: 34px;
+  height: 34px;
+  display:grid;
+  place-items:center;
+
+  border-radius: 12px;
+  background: rgba(111,143,99,.12);
+  border: 1px solid rgba(111,143,99,.18);
 }
 
-.contact-list .txt{
+.contact-ico svg{
+  width: 18px;
+  height: 18px;
+  display:block;
+  color: var(--sage-dark);
+}
+
+.contact-text{
   font-size: 13px;
   line-height: 1.35;
   color: rgba(18,24,38,.72);
 }
 
-.contact-list a,
-.contact-list a:visited{
+.contact-text a,
+.contact-text a:visited{
   color: var(--sage-dark);
   font-weight: 700;
   text-decoration: underline;
@@ -274,7 +287,7 @@ body{
   display: grid;
   justify-items: center;
   gap: 10px;
-  padding-top: 18px;
+  padding-top: 22px;
   padding-bottom: 6px;
 }
 
@@ -300,7 +313,7 @@ body{
 }
 
 /* =========================
-   PAGE CARD (Impressum/Datenschutz) - unchanged
+   PAGE CARD (Impressum/Datenschutz)
    ========================= */
 .page-card{
   margin: 10px auto 0;
@@ -342,24 +355,32 @@ body{
 }
 
 /* =========================
-   Responsive (we will do your special mobile-horizontal next)
+   Responsive (we tune mobile-horizontal next)
    ========================= */
 @media (max-width: 1100px){
+  :root{
+    --space-after-gallery: 28px;
+    --space-after-subline: 22px;
+  }
+
   .gallery{
     width: calc(100vw - 32px);
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
   }
+
   .tile{
-    height: clamp(170px, 26vh, 280px);
+    height: clamp(180px, 26vh, 320px);
     border-radius: 22px;
   }
+
   .subline-pill{
     width: calc(100vw - 32px);
     font-size: clamp(22px, 3vw, 34px);
     padding: 14px 16px;
     letter-spacing: .18em;
   }
+
   .contact-bar{
     width: calc(100vw - 32px);
   }
@@ -378,15 +399,19 @@ body{
     border-radius: 18px;
   }
 
-  .subline-pill{
-    font-size: 22px;
-    padding: 14px 14px;
-    letter-spacing: .14em;
+  .contact-row{
+    grid-template-columns: 32px 1fr;
+    padding: 10px 12px;
   }
 
-  .contact-bar{
-    padding: 14px 12px;
-    border-radius: 16px;
+  .contact-ico{
+    width: 32px;
+    height: 32px;
+  }
+
+  .contact-ico svg{
+    width: 17px;
+    height: 17px;
   }
 
   .brand{
