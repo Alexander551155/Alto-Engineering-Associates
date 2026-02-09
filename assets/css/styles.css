@@ -568,10 +568,10 @@ body::after{
     height: 100svh;
   }
   .swipe-hint{
-    position: absolute;
+    position: sticky;
     left: 0;
-    right: 0;
     top: 50%;
+    width: 100%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
