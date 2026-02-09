@@ -557,6 +557,8 @@ body::after{
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+    scroll-snap-stop: always;
+    -webkit-overflow-scrolling: touch;
     height: 100svh;
   }
   .swipe-hint{
