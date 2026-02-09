@@ -103,10 +103,15 @@
     if (y) y.textContent = new Date().getFullYear();
 
     const gallery = document.querySelector(".gallery");
-    const tiles = gallery ? Array.from(gallery.querySelectorAll(".tile")) : [];
     const mobileQuery = window.matchMedia("(max-width: 560px)");
     let slideTimer = null;
-    let currentIndex = 0;
+    let tiles = [];
+    let originalCount = 0;
+    let isLooping = false;
+    let normalizeLock = false;
+
+    const collectTiles = () =>
+      gallery ? Array.from(gallery.querySelectorAll(".tile")) : [];
 
     const stopAuto = () => {
       if (slideTimer) {
@@ -115,48 +120,86 @@
       }
     };
 
-    const scrollToIndex = (index) => {
-      if (!gallery || !tiles[index]) return;
-      gallery.scrollTo({ left: tiles[index].offsetLeft, behavior: "smooth" });
+    const setupLoop = () => {
+      if (!gallery || isLooping) return;
+      tiles = collectTiles();
+      originalCount = tiles.length;
+      if (originalCount < 2) return;
+
+      const prependFrag = document.createDocumentFragment();
+      tiles.forEach((tile) => {
+        const clone = tile.cloneNode(true);
+        clone.dataset.clone = "true";
+        prependFrag.appendChild(clone);
+      });
+      gallery.insertBefore(prependFrag, gallery.firstChild);
+
+      const appendFrag = document.createDocumentFragment();
+      tiles.forEach((tile) => {
+        const clone = tile.cloneNode(true);
+        clone.dataset.clone = "true";
+        appendFrag.appendChild(clone);
+      });
+      gallery.appendChild(appendFrag);
+
+      isLooping = true;
+      tiles = collectTiles();
+      gallery.scrollLeft = gallery.clientWidth * originalCount;
+    };
+
+    const teardownLoop = () => {
+      if (!gallery || !isLooping) {
+        tiles = collectTiles();
+        originalCount = tiles.length;
+        return;
+      }
+      gallery.querySelectorAll('[data-clone="true"]').forEach((node) => node.remove());
+      isLooping = false;
+      tiles = collectTiles();
+      originalCount = tiles.length;
+      gallery.scrollLeft = 0;
+    };
+
+    const normalizeLoop = () => {
+      if (!isLooping || !gallery || normalizeLock) return;
+      normalizeLock = true;
+      requestAnimationFrame(() => {
+        const width = gallery.clientWidth || 1;
+        const index = Math.round(gallery.scrollLeft / width);
+        if (index <= originalCount - 1) {
+          gallery.scrollLeft += originalCount * width;
+        } else if (index >= originalCount * 2) {
+          gallery.scrollLeft -= originalCount * width;
+        }
+        normalizeLock = false;
+      });
     };
 
     const startAuto = () => {
       if (!gallery || tiles.length < 2) return;
       stopAuto();
       slideTimer = setInterval(() => {
-        currentIndex = (currentIndex + 1) % tiles.length;
-        scrollToIndex(currentIndex);
+        gallery.scrollBy({ left: gallery.clientWidth, behavior: "smooth" });
       }, 4000);
-    };
-
-    const updateIndexFromScroll = () => {
-      if (!gallery) return;
-      const center = gallery.scrollLeft + gallery.clientWidth / 2;
-      let bestIndex = 0;
-      let bestDist = Infinity;
-      tiles.forEach((tile, index) => {
-        const tileCenter = tile.offsetLeft + tile.offsetWidth / 2;
-        const dist = Math.abs(tileCenter - center);
-        if (dist < bestDist) {
-          bestDist = dist;
-          bestIndex = index;
-        }
-      });
-      currentIndex = bestIndex;
     };
 
     const handleMode = () => {
       if (mobileQuery.matches) {
+        setupLoop();
         startAuto();
       } else {
         stopAuto();
+        teardownLoop();
       }
     };
 
-    if (gallery && tiles.length) {
+    if (gallery) {
+      tiles = collectTiles();
+      originalCount = tiles.length;
       handleMode();
       mobileQuery.addEventListener("change", handleMode);
-      gallery.addEventListener("scroll", updateIndexFromScroll, { passive: true });
+      window.addEventListener("resize", handleMode);
+      gallery.addEventListener("scroll", normalizeLoop, { passive: true });
       gallery.addEventListener("pointerdown", stopAuto);
       gallery.addEventListener("pointerup", handleMode);
       gallery.addEventListener("touchstart", stopAuto, { passive: true });
