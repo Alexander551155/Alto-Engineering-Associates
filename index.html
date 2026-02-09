@@ -105,6 +105,7 @@
     const gallery = document.querySelector(".gallery");
     const mobileQuery = window.matchMedia("(max-width: 560px)");
     let slideTimer = null;
+    let resumeTimer = null;
     let tiles = [];
     let originalCount = 0;
     let isLooping = false;
@@ -118,6 +119,14 @@
         clearInterval(slideTimer);
         slideTimer = null;
       }
+    };
+
+    const scheduleResume = () => {
+      if (!mobileQuery.matches) return;
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        startAuto();
+      }, 6000);
     };
 
     const setupLoop = () => {
@@ -199,11 +208,21 @@
       handleMode();
       mobileQuery.addEventListener("change", handleMode);
       window.addEventListener("resize", handleMode);
-      gallery.addEventListener("scroll", normalizeLoop, { passive: true });
-      gallery.addEventListener("pointerdown", stopAuto);
-      gallery.addEventListener("pointerup", handleMode);
-      gallery.addEventListener("touchstart", stopAuto, { passive: true });
-      gallery.addEventListener("touchend", handleMode, { passive: true });
+      gallery.addEventListener("scroll", () => {
+        normalizeLoop();
+        stopAuto();
+        scheduleResume();
+      }, { passive: true });
+      gallery.addEventListener("pointerdown", () => {
+        stopAuto();
+        scheduleResume();
+      });
+      gallery.addEventListener("pointerup", scheduleResume);
+      gallery.addEventListener("touchstart", () => {
+        stopAuto();
+        scheduleResume();
+      }, { passive: true });
+      gallery.addEventListener("touchend", scheduleResume, { passive: true });
     }
   </script>
 
