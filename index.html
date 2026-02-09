@@ -213,7 +213,9 @@
         stopAuto();
         scheduleResume();
         if (settleTimer) clearTimeout(settleTimer);
-        settleTimer = setTimeout(normalizeLoop, 120);
+        settleTimer = setTimeout(() => {
+          requestAnimationFrame(() => requestAnimationFrame(normalizeLoop));
+        }, 200);
       }, { passive: true });
       gallery.addEventListener("pointerdown", () => {
         stopAuto();
