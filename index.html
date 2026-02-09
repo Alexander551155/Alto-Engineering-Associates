@@ -106,10 +106,10 @@
     const mobileQuery = window.matchMedia("(max-width: 560px)");
     let slideTimer = null;
     let resumeTimer = null;
+    let settleTimer = null;
     let tiles = [];
     let originalCount = 0;
     let isLooping = false;
-    let normalizeLock = false;
 
     const collectTiles = () =>
       gallery ? Array.from(gallery.querySelectorAll(".tile")) : [];
@@ -153,7 +153,11 @@
 
       isLooping = true;
       tiles = collectTiles();
-      gallery.scrollLeft = gallery.clientWidth * originalCount;
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          gallery.scrollLeft = gallery.clientWidth * originalCount;
+        });
+      });
     };
 
     const teardownLoop = () => {
@@ -170,18 +174,15 @@
     };
 
     const normalizeLoop = () => {
-      if (!isLooping || !gallery || normalizeLock) return;
-      normalizeLock = true;
-      requestAnimationFrame(() => {
-        const width = gallery.clientWidth || 1;
-        const index = Math.round(gallery.scrollLeft / width);
-        if (index <= originalCount - 1) {
-          gallery.scrollLeft += originalCount * width;
-        } else if (index >= originalCount * 2) {
-          gallery.scrollLeft -= originalCount * width;
-        }
-        normalizeLock = false;
-      });
+      if (!isLooping || !gallery || originalCount < 2) return;
+      const width = gallery.clientWidth || 1;
+      const min = width * (originalCount - 0.5);
+      const max = width * (originalCount * 2 - 0.5);
+      if (gallery.scrollLeft < min) {
+        gallery.scrollLeft += originalCount * width;
+      } else if (gallery.scrollLeft > max) {
+        gallery.scrollLeft -= originalCount * width;
+      }
     };
 
     const startAuto = () => {
@@ -189,7 +190,7 @@
       stopAuto();
       slideTimer = setInterval(() => {
         gallery.scrollBy({ left: gallery.clientWidth, behavior: "smooth" });
-      }, 4000);
+      }, 6000);
     };
 
     const handleMode = () => {
@@ -209,9 +210,10 @@
       mobileQuery.addEventListener("change", handleMode);
       window.addEventListener("resize", handleMode);
       gallery.addEventListener("scroll", () => {
-        normalizeLoop();
         stopAuto();
         scheduleResume();
+        if (settleTimer) clearTimeout(settleTimer);
+        settleTimer = setTimeout(normalizeLoop, 120);
       }, { passive: true });
       gallery.addEventListener("pointerdown", () => {
         stopAuto();
