@@ -598,6 +598,12 @@ body::after{
     padding: 14px 14px;
   }
   .i, .i svg{ width:15px; height:15px; }
+
+  .subline-pill{
+    white-space: nowrap;
+    font-size: 16px;
+    letter-spacing: 0.18em;
+  }
 }
 
 /* Mobile Portrait: 2x2 only (hide 5th) */
