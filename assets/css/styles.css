@@ -193,6 +193,7 @@ body::after{
   gap: 6px;
 
   align-items: stretch;
+  position: relative;
 }
 
 /* BIG tiles (sketch-like) */
@@ -557,6 +558,29 @@ body::after{
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     height: 100svh;
+  }
+  .swipe-hint{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    pointer-events: none;
+    z-index: 2;
+    color: rgba(255,255,255,.9);
+    mix-blend-mode: difference;
+    animation: swipeHint 2.8s ease-in-out infinite;
+  }
+  .swipe-arrow{
+    font-size: 26px;
+    line-height: 1;
+    opacity: .8;
+  }
+
+  @keyframes swipeHint{
+    0%, 100%{ opacity: .25; transform: translateX(0); }
+    50%{ opacity: .7; transform: translateX(6px); }
   }
   .gallery .tile{
     flex: 0 0 100%;
