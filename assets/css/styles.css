@@ -579,23 +579,24 @@ body::after{
     padding: 0 16px;
     pointer-events: none;
     z-index: 5;
-    color: rgba(255,255,255,.95);
-    animation: swipeHint 2.8s ease-in-out infinite;
+    color: rgba(255,255,255,.85);
+    opacity: .55;
+    animation: swipeHint 3.2s ease-in-out infinite;
   }
   .swipe-arrow{
-    font-size: 26px;
+    font-size: 24px;
     line-height: 1;
-    opacity: .9;
-    padding: 6px 10px;
+    opacity: .8;
+    padding: 4px 8px;
     border-radius: 999px;
-    background: rgba(0,0,0,.28);
-    box-shadow: 0 6px 18px rgba(0,0,0,.25);
-    text-shadow: 0 2px 6px rgba(0,0,0,.35);
+    background: rgba(0,0,0,.2);
+    box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    text-shadow: 0 1px 4px rgba(0,0,0,.3);
   }
 
   @keyframes swipeHint{
     0%, 100%{ opacity: .25; transform: translateX(0); }
-    50%{ opacity: .7; transform: translateX(6px); }
+    50%{ opacity: .6; transform: translateX(5px); }
   }
   .gallery .tile{
     flex: 0 0 100%;

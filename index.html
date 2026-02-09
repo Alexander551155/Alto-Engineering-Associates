@@ -110,6 +110,7 @@
     let tiles = [];
     let originalCount = 0;
     let isLooping = false;
+    const loopSets = 3;
 
     const collectTiles = () =>
       gallery ? Array.from(gallery.querySelectorAll(".tile")) : [];
@@ -135,27 +136,26 @@
       originalCount = tiles.length;
       if (originalCount < 2) return;
 
-      const prependFrag = document.createDocumentFragment();
-      tiles.forEach((tile) => {
-        const clone = tile.cloneNode(true);
-        clone.dataset.clone = "true";
-        prependFrag.appendChild(clone);
-      });
-      gallery.insertBefore(prependFrag, gallery.firstChild);
+      const cloneSet = () => {
+        const frag = document.createDocumentFragment();
+        tiles.forEach((tile) => {
+          const clone = tile.cloneNode(true);
+          clone.dataset.clone = "true";
+          frag.appendChild(clone);
+        });
+        return frag;
+      };
 
-      const appendFrag = document.createDocumentFragment();
-      tiles.forEach((tile) => {
-        const clone = tile.cloneNode(true);
-        clone.dataset.clone = "true";
-        appendFrag.appendChild(clone);
-      });
-      gallery.appendChild(appendFrag);
+      for (let i = 0; i < loopSets; i += 1) {
+        gallery.insertBefore(cloneSet(), gallery.firstChild);
+        gallery.appendChild(cloneSet());
+      }
 
       isLooping = true;
       tiles = collectTiles();
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          gallery.scrollLeft = gallery.clientWidth * originalCount;
+          gallery.scrollLeft = gallery.clientWidth * originalCount * loopSets;
         });
       });
     };
@@ -176,12 +176,14 @@
     const normalizeLoop = () => {
       if (!isLooping || !gallery || originalCount < 2) return;
       const width = gallery.clientWidth || 1;
-      const min = width * (originalCount - 0.5);
-      const max = width * (originalCount * 2 - 0.5);
-      if (gallery.scrollLeft < min) {
-        gallery.scrollLeft += originalCount * width;
-      } else if (gallery.scrollLeft > max) {
-        gallery.scrollLeft -= originalCount * width;
+      const setWidth = originalCount * width;
+      const min = setWidth * (loopSets - 0.5);
+      const max = setWidth * (loopSets + 0.5);
+      while (gallery.scrollLeft < min) {
+        gallery.scrollLeft += setWidth * loopSets;
+      }
+      while (gallery.scrollLeft > max) {
+        gallery.scrollLeft -= setWidth * loopSets;
       }
     };
 
