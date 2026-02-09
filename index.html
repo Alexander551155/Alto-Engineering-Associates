@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body>
+<body class="home">
 
   <div class="topbar">• Passion for Design and Lifestyle •</div>
 
@@ -97,6 +97,67 @@
   <script>
     const y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
+
+    const gallery = document.querySelector(".gallery");
+    const tiles = gallery ? Array.from(gallery.querySelectorAll(".tile")) : [];
+    const mobileQuery = window.matchMedia("(max-width: 560px)");
+    let slideTimer = null;
+    let currentIndex = 0;
+
+    const stopAuto = () => {
+      if (slideTimer) {
+        clearInterval(slideTimer);
+        slideTimer = null;
+      }
+    };
+
+    const scrollToIndex = (index) => {
+      if (!gallery || !tiles[index]) return;
+      gallery.scrollTo({ left: tiles[index].offsetLeft, behavior: "smooth" });
+    };
+
+    const startAuto = () => {
+      if (!gallery || tiles.length < 2) return;
+      stopAuto();
+      slideTimer = setInterval(() => {
+        currentIndex = (currentIndex + 1) % tiles.length;
+        scrollToIndex(currentIndex);
+      }, 4000);
+    };
+
+    const updateIndexFromScroll = () => {
+      if (!gallery) return;
+      const center = gallery.scrollLeft + gallery.clientWidth / 2;
+      let bestIndex = 0;
+      let bestDist = Infinity;
+      tiles.forEach((tile, index) => {
+        const tileCenter = tile.offsetLeft + tile.offsetWidth / 2;
+        const dist = Math.abs(tileCenter - center);
+        if (dist < bestDist) {
+          bestDist = dist;
+          bestIndex = index;
+        }
+      });
+      currentIndex = bestIndex;
+    };
+
+    const handleMode = () => {
+      if (mobileQuery.matches) {
+        startAuto();
+      } else {
+        stopAuto();
+      }
+    };
+
+    if (gallery && tiles.length) {
+      handleMode();
+      mobileQuery.addEventListener("change", handleMode);
+      gallery.addEventListener("scroll", updateIndexFromScroll, { passive: true });
+      gallery.addEventListener("pointerdown", stopAuto);
+      gallery.addEventListener("pointerup", handleMode);
+      gallery.addEventListener("touchstart", stopAuto, { passive: true });
+      gallery.addEventListener("touchend", handleMode, { passive: true });
+    }
   </script>
 
 </body>
