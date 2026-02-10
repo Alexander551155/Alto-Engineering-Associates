@@ -200,6 +200,10 @@ body::after{
   display: none;
 }
 
+.gallery-wrap{
+  position: relative;
+}
+
 .scroll-hint{
   display: none;
 }
@@ -571,7 +575,7 @@ body::after{
     height: 86svh;
   }
   .swipe-hint{
-    position: fixed;
+    position: absolute;
     left: 0;
     right: 0;
     top: 50%;
@@ -582,7 +586,7 @@ body::after{
     justify-content: space-between;
     padding: 0 16px;
     pointer-events: none;
-    z-index: 6;
+    z-index: 2;
     color: rgba(255,255,255,.9);
     opacity: .7;
     animation: swipeHint 3.2s ease-in-out infinite;
