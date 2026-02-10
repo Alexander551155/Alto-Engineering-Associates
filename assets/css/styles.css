@@ -567,7 +567,6 @@ body::after{
     scroll-behavior: smooth;
     scroll-snap-stop: always;
     -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
     overscroll-behavior-x: contain;
     height: 86svh;
   }
