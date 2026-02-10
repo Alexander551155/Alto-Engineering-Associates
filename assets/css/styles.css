@@ -583,19 +583,19 @@ body::after{
     padding: 0 16px;
     pointer-events: none;
     z-index: 5;
-    color: rgba(255,255,255,.85);
-    opacity: .55;
+    color: rgba(255,255,255,.9);
+    opacity: .7;
     animation: swipeHint 3.2s ease-in-out infinite;
   }
   .swipe-arrow{
-    font-size: 24px;
+    font-size: 42px;
     line-height: 1;
-    opacity: .8;
-    padding: 4px 8px;
+    opacity: .75;
+    padding: 10px 16px;
     border-radius: 999px;
-    background: rgba(0,0,0,.2);
-    box-shadow: 0 4px 12px rgba(0,0,0,.2);
-    text-shadow: 0 1px 4px rgba(0,0,0,.3);
+    background: rgba(0,0,0,.18);
+    box-shadow: 0 6px 18px rgba(0,0,0,.22);
+    text-shadow: 0 2px 6px rgba(0,0,0,.3);
   }
 
   .scroll-hint{
