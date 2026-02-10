@@ -200,6 +200,10 @@ body::after{
   display: none;
 }
 
+.scroll-hint{
+  display: none;
+}
+
 /* BIG tiles (sketch-like) */
 .tile{
   border-radius: 0;
@@ -565,7 +569,7 @@ body::after{
     -webkit-overflow-scrolling: touch;
     touch-action: pan-x;
     overscroll-behavior-x: contain;
-    height: 100svh;
+    height: 86svh;
   }
   .swipe-hint{
     position: sticky;
@@ -592,6 +596,16 @@ body::after{
     background: rgba(0,0,0,.2);
     box-shadow: 0 4px 12px rgba(0,0,0,.2);
     text-shadow: 0 1px 4px rgba(0,0,0,.3);
+  }
+
+  .scroll-hint{
+    display: block;
+    text-align: center;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 6px 0 2px;
   }
 
   @keyframes swipeHint{

@@ -33,6 +33,7 @@
           <span class="swipe-arrow">›</span>
         </div>
       </section>
+      <div class="scroll-hint" aria-hidden="true">Scroll ↓</div>
 
       <div class="subline-pill subline-between">
         <span>Interiors and Architecture</span>
@@ -101,135 +102,6 @@
   <script>
     const y = document.getElementById("year");
     if (y) y.textContent = new Date().getFullYear();
-
-    const gallery = document.querySelector(".gallery");
-    const mobileQuery = window.matchMedia("(max-width: 560px)");
-    let slideTimer = null;
-    let resumeTimer = null;
-    let settleTimer = null;
-    let tiles = [];
-    let originalCount = 0;
-    let isLooping = false;
-    const loopSets = 3;
-
-    const collectTiles = () =>
-      gallery ? Array.from(gallery.querySelectorAll(".tile")) : [];
-
-    const stopAuto = () => {
-      if (slideTimer) {
-        clearInterval(slideTimer);
-        slideTimer = null;
-      }
-    };
-
-    const scheduleResume = () => {
-      if (!mobileQuery.matches) return;
-      if (resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => {
-        startAuto();
-      }, 6000);
-    };
-
-    const setupLoop = () => {
-      if (!gallery || isLooping) return;
-      tiles = collectTiles();
-      originalCount = tiles.length;
-      if (originalCount < 2) return;
-
-      const cloneSet = () => {
-        const frag = document.createDocumentFragment();
-        tiles.forEach((tile) => {
-          const clone = tile.cloneNode(true);
-          clone.dataset.clone = "true";
-          frag.appendChild(clone);
-        });
-        return frag;
-      };
-
-      for (let i = 0; i < loopSets; i += 1) {
-        gallery.insertBefore(cloneSet(), gallery.firstChild);
-        gallery.appendChild(cloneSet());
-      }
-
-      isLooping = true;
-      tiles = collectTiles();
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          gallery.scrollLeft = gallery.clientWidth * originalCount * loopSets;
-        });
-      });
-    };
-
-    const teardownLoop = () => {
-      if (!gallery || !isLooping) {
-        tiles = collectTiles();
-        originalCount = tiles.length;
-        return;
-      }
-      gallery.querySelectorAll('[data-clone="true"]').forEach((node) => node.remove());
-      isLooping = false;
-      tiles = collectTiles();
-      originalCount = tiles.length;
-      gallery.scrollLeft = 0;
-    };
-
-    const normalizeLoop = () => {
-      if (!isLooping || !gallery || originalCount < 2) return;
-      const width = gallery.clientWidth || 1;
-      const setWidth = originalCount * width;
-      const min = setWidth * (loopSets - 0.5);
-      const max = setWidth * (loopSets + 0.5);
-      while (gallery.scrollLeft < min) {
-        gallery.scrollLeft += setWidth * loopSets;
-      }
-      while (gallery.scrollLeft > max) {
-        gallery.scrollLeft -= setWidth * loopSets;
-      }
-    };
-
-    const startAuto = () => {
-      if (!gallery || tiles.length < 2) return;
-      stopAuto();
-      slideTimer = setInterval(() => {
-        gallery.scrollBy({ left: gallery.clientWidth, behavior: "smooth" });
-      }, 6000);
-    };
-
-    const handleMode = () => {
-      if (mobileQuery.matches) {
-        setupLoop();
-        startAuto();
-      } else {
-        stopAuto();
-        teardownLoop();
-      }
-    };
-
-    if (gallery) {
-      tiles = collectTiles();
-      originalCount = tiles.length;
-      handleMode();
-      mobileQuery.addEventListener("change", handleMode);
-      window.addEventListener("resize", handleMode);
-      gallery.addEventListener("scroll", () => {
-        stopAuto();
-        scheduleResume();
-        if (settleTimer) clearTimeout(settleTimer);
-        settleTimer = setTimeout(() => {
-          requestAnimationFrame(() => requestAnimationFrame(normalizeLoop));
-        }, 200);
-      }, { passive: true });
-      gallery.addEventListener("pointerdown", () => {
-        stopAuto();
-        scheduleResume();
-      });
-      gallery.addEventListener("pointerup", scheduleResume);
-      gallery.addEventListener("touchstart", () => {
-        stopAuto();
-        scheduleResume();
-      }, { passive: true });
-      gallery.addEventListener("touchend", scheduleResume, { passive: true });
-    }
   </script>
 
 </body>
