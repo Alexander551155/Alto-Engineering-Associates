@@ -571,8 +571,9 @@ body::after{
     height: 86svh;
   }
   .swipe-hint{
-    position: sticky;
+    position: fixed;
     left: 0;
+    right: 0;
     top: 50%;
     width: 100%;
     transform: translateY(-50%);
@@ -581,7 +582,7 @@ body::after{
     justify-content: space-between;
     padding: 0 16px;
     pointer-events: none;
-    z-index: 5;
+    z-index: 6;
     color: rgba(255,255,255,.9);
     opacity: .7;
     animation: swipeHint 3.2s ease-in-out infinite;
